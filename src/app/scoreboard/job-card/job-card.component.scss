@@ -1,8 +1,40 @@
-.button-right {
-  font-size: large;
-  font-weight: bold;
-  background-color: var(--ion-color-secondary);
-  color: white;
-  height: 100%;
+@import '../../../theme/mixins.scss';
+
+:host {
+  .icon-container {
+    display: inline-flex;
+
+    app-category-icon {
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+
+  .main-container {
+    display: inline-flex;
+
+    .description {
+      margin-top: auto;
+      margin-bottom: auto;
+
+      ion-card-content {
+        @include default-font;
+        padding: 0;
+
+        .category {
+          @include font-bold;
+        }
+      }
+    }
+
+    .button-right {
+      font-size: 14px;
+      font-weight: bold;
+      height: 100%;
+      margin: 0px;
+      margin-left: auto;
+      --border-radius: 0px;
+    }
+  }
 }
 

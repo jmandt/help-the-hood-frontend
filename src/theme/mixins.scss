@@ -7,6 +7,11 @@
   --color: var(--ion-color-primary-contrast);
 }
 
+@mixin default-font {
+  color: #3e3b3b;
+  font-size: 14px;
+}
+
 @mixin font-bold {
-  font-weight: 500;
+  font-weight: 600;
 }

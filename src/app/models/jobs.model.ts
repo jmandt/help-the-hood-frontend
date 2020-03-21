@@ -1,9 +1,11 @@
+import * as firebase from 'firebase/app'
+
 export interface NewJob {
     id: string;
     name: string;
     category: string;
-    startDate: Date;
-    endDate?: Date;
+    startDate: firebase.firestore.Timestamp;
+    endDate?: firebase.firestore.Timestamp;
     description: string;
     location: Location;
 }

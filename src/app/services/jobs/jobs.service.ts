@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {AngularFirestore} from '@angular/fire/firestore';
-import {NewJob, User} from '../../models';
+import {NewJob} from '../../models';
 import {Store} from '@ngxs/store';
 
 @Injectable({
