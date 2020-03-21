@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {NewJobModalComponent} from './new-job-modal/new-job-modal.component';
 import {ModalController} from '@ionic/angular';
-import {JobsService} from '../services/jobs.service';
+import {JobsService} from '../services/jobs/jobs.service';
 import {NewJob} from '../models/jobs.models';
 
 @Component({
