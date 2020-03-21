@@ -2,7 +2,8 @@ export interface NewJob {
     id: string;
     name: string;
     category: string;
-    dueDate: string;
+    startDate: Date;
+    endDate?: Date;
     description: string;
     location: Location;
 }
