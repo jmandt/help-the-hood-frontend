@@ -13,5 +13,15 @@
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="presentModal()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <ion-card *ngFor="let job of jobs">
+    <ion-card-subtitle>{{job.category}}</ion-card-subtitle>
+    <ion-card-content>{{job.name}}</ion-card-content>
+  </ion-card>
+
 </ion-content>
