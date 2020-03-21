@@ -61,7 +61,7 @@ export class SocialLoginComponent implements OnInit {
         `Welcome, ${res.user.displayName}`,
         'success'
     );
-    this.router.navigateByUrl('/profile-overview');
+    this.router.navigateByUrl('/userProfile-overview');
   }
 
 }

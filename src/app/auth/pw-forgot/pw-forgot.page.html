@@ -20,10 +20,7 @@
         </ion-item>
 
     </form>
-    <ion-row class="ion-margin-top">
-        <ion-button  expand="full" style="width: 100%"  (click)="reset_password()" [disabled]="!forgotPasswordForm.valid">
-            Link zusenden
-        </ion-button>
-    </ion-row>
+
+    <app-password-reset-button></app-password-reset-button>
 
 </ion-content>
