@@ -5,11 +5,11 @@ import {JobsService} from '../services/jobs/jobs.service';
 import {NewJob} from '../models';
 
 @Component({
-  selector: 'app-tab1',
-  templateUrl: 'tab1.page.html',
-  styleUrls: ['tab1.page.scss']
+  selector: 'app-scoreboard',
+  templateUrl: 'scoreboard.page.html',
+  styleUrls: ['scoreboard.page.scss']
 })
-export class Tab1Page {
+export class ScoreboardPage {
 
   jobs: NewJob[] = [];
 
