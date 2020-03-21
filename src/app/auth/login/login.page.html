@@ -1,0 +1,49 @@
+<ion-content>
+    <ion-grid>
+        <form [formGroup]="loginForm" autocomplete="off">
+            <div>
+                <ion-item>
+                    <ion-label position="floating">Emailadresse</ion-label>
+                    <ion-input type="email" formControlName="email"></ion-input>
+                </ion-item>
+
+                <ion-item>
+                    <ion-label position="floating">Password</ion-label>
+                    <ion-input type="password" formControlName="password"></ion-input>
+                </ion-item>
+                <div *ngIf="!loginForm.controls.email.valid && (loginForm.controls.email.dirty)" class="alert">Valid
+                    E-Mail is required
+                </div>
+            </div>
+        </form>
+        <ion-button expand="block" [disabled]="!loginForm.valid" (click)="tryLogin()">
+            Login
+        </ion-button>
+        <ion-row>
+            <ion-button expand="block" color="secondary" (click)="facebookLogin()">
+                <ion-icon name="logo-facebook"></ion-icon>
+                <ion-text class="ml3">Login with Facebook</ion-text>
+            </ion-button>
+        </ion-row>
+        <ion-row>
+            <ion-button expand="block" class="w-100" color="light" (click)="googleLogin()">
+                <ion-icon name="logo-google"></ion-icon>
+                <ion-text class="ml3">Login with Google</ion-text>
+            </ion-button>
+        </ion-row>
+
+        <hr/>
+
+        <ion-row>
+            <ion-col size="6">
+                <ion-text>Don't have an account?</ion-text>
+                <a routerLink="/sign-up" routerDirection="forward">Sign up</a>
+            </ion-col>
+            <ion-col size="6">
+                <a routerLink="/password-forgot" routerDirection="forward">
+                    Forgot password?
+                </a>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>
