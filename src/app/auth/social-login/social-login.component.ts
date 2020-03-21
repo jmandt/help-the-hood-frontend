@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/firestore';
 import {take} from 'rxjs/operators';
 import {User} from '../../models';
 import {UserAction} from '../../store/actions';
 import {AuthService} from '../../services/auth';
 import {Router} from '@angular/router';
-import {FormBuilder} from '@angular/forms';
 import {CoreService} from '../../services/core';
 import {Store} from '@ngxs/store';
 
@@ -17,9 +17,9 @@ export class SocialLoginComponent implements OnInit {
 
   constructor(public authService: AuthService,
               private router: Router,
-              private fb: FormBuilder,
               private coreService: CoreService,
               private store: Store,
+              private db: AngularFirestore
   ) { }
 
   ngOnInit() {}
