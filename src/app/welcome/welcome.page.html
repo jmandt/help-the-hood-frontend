@@ -1,0 +1,32 @@
+<ion-content fullscreen="true">
+  <ion-slides>
+    <ion-slide *ngIf="activeSlide==='first'">
+        <ion-card>
+          <ion-card-header >
+            <ion-card-subtitle>Welcome</ion-card-subtitle>
+            <ion-card-title>Help the Hood</ion-card-title>
+          </ion-card-header>
+
+          <ion-card-content>
+            #WeVsVirus
+          </ion-card-content>
+        </ion-card>
+      <ion-button (click)="next()">Next</ion-button>
+    </ion-slide>
+    <ion-slide *ngIf="activeSlide==='second'">
+      <ion-card>
+        <ion-card-header >
+          <ion-card-subtitle>MVP</ion-card-subtitle>
+          <ion-card-title>First tests</ion-card-title>
+        </ion-card-header>
+
+        <ion-card-content>
+          Lets to it together
+          <br>
+          Stay tuned.
+        </ion-card-content>
+      </ion-card>
+      <ion-button (click)="getStarted()">Get started</ion-button>
+    </ion-slide>
+  </ion-slides>
+</ion-content>
