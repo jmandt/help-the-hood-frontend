@@ -2,6 +2,9 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder} from '@angular/forms';
 import {User} from '../models';
 import {UserService} from '../services/users/user.service';
+import {State} from '@ngxs/store';
+import {UserState} from '../store/state';
+import {Observable} from 'rxjs';
 
 @Component({
     selector: 'app-user',
@@ -10,19 +13,15 @@ import {UserService} from '../services/users/user.service';
 })
 export class UserPage implements OnInit {
 
+    // @ts-ignore
+    @State(UserState) user$: Observable<User>;
+
     userUpdateForm;
     // @ts-ignore
-    userProfile: User = {
-        uid: 'k7m3tTtRalfzuGdC25n2c5ZLbFE3',
-        dateCreated: new Date().getUTCDate(),
-        email: 'jmandt.fnt@gmail.com',
-        emailVerified: false,
-        lastLogin: new Date().getUTCDate(),
-        name: 'JOnathan Mandt',
-        profileImageUrl: ''
-    };
+    userProfile: User;
 
     constructor(private fb: FormBuilder, private userService: UserService) {
+        this.user$.subscribe(user => this.userProfile = user);
     }
 
     ngOnInit() {
