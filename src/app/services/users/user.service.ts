@@ -15,7 +15,7 @@ export class UserService {
   user: User;
   constructor(private db: AngularFirestore, private store: Store,
   ) {
-    this.user$.subscribe(user => console.log(user));
+    this.user$.subscribe(user => this.user = user);
   }
 
   update(changeData) {
