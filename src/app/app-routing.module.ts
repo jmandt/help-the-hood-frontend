@@ -15,6 +15,11 @@ const routes: Routes = [
         import('./welcome/welcome.module').then(m => m.WelcomePageModule),
   },
   {
+    path: 'auth',
+    loadChildren: () =>
+        import('./auth/auth.module').then(m => m.AuthModule),
+  },
+  {
     path: '**',
     redirectTo: '',
   },
