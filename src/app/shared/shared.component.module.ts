@@ -5,6 +5,7 @@ import {IonicModule} from '@ionic/angular';
 import localeDe from '@angular/common/locales/de';
 
 import {AlgoliaSearchComponent} from './algolia-search';
+import {CategoryIconComponent} from './category-icon/category-icon.component';
 
 
 registerLocaleData(localeDe, 'de');
@@ -18,9 +19,11 @@ registerLocaleData(localeDe, 'de');
     ],
     declarations: [
         AlgoliaSearchComponent,
+        CategoryIconComponent
     ],
     exports: [
         AlgoliaSearchComponent,
+        CategoryIconComponent
     ],
     providers: [],
 })

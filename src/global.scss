@@ -32,3 +32,12 @@
 body {
   font-family: 'Roboto', sans-serif;
 }
+
+.details-modal .modal-wrapper {
+  height:70%;
+  width: 90%;
+  top: 15%;
+  border-radius: 8px;
+  position: absolute;
+  display: block;
+}

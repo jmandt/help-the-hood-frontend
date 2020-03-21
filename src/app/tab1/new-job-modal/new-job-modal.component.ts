@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {JobsService} from '../../services/jobs/jobs.service';
 import {ModalController} from '@ionic/angular';
+import {Categories, Category} from '../../models/jobs.models';
 
 @Component({
   selector: 'app-new-job-modal',
@@ -12,7 +13,7 @@ export class NewJobModalComponent implements OnInit {
 
   showErrorMessage = false;
   newJobForm: FormGroup;
-  selectedCategory: string;
+  categories: Category [] = Categories;
 
 
   constructor(private fb: FormBuilder,

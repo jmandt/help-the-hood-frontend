@@ -17,6 +17,15 @@ export class JobsService {
     }
 
     getAll() {
-        return this.db.collection('/jobs', ref => ref.orderBy('creationTime', 'desc')).valueChanges();
+        return this.db.collection('/jobs', ref =>
+            ref.orderBy('creationTime', 'desc')).valueChanges({idField: 'id'});
+    }
+
+    getJobById(id) {
+        return this.db.collection('/jobs').doc(id).valueChanges();
+    }
+
+    updateStatus(id: string) {
+        return this.db.collection('jobs').doc(id).update({status: 'commited'});
     }
 }

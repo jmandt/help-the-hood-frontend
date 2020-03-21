@@ -1,0 +1,24 @@
+.header {
+  font-weight: bold;
+  font-size: large;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.inline-flex {
+  display: inline-flex;
+}
+
+.help {
+  padding-top: 9%;
+  font-size: large;
+  font-weight: bold;
+  background-color: var(--ion-color-secondary);
+  color: white;
+  height: 20%;
+  bottom: 0;
+  position: absolute;
+  width: 100%;
+}

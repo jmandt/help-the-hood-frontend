@@ -15,10 +15,7 @@
     <ion-item>
       <ion-label>Kategorie</ion-label>
       <ion-select formControlName="category" value="shopping" okText="Okay" cancelText="Dismiss">
-        <ion-select-option value="shopping">Einkaufen</ion-select-option>
-        <ion-select-option value="repair">Reparieren</ion-select-option>
-        <ion-select-option value="support">tragen helfen</ion-select-option>
-        <ion-select-option value="medical">Medikamente</ion-select-option>
+        <ion-select-option *ngFor="let item of categories" value="item.value">{{item.displayName}}</ion-select-option>
       </ion-select>
     </ion-item>
     <ion-item>
