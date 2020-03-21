@@ -6,4 +6,5 @@ export interface User {
   name: string;
   profileImageUrl: string;
   uid: string;
+  postalCode: number;
 }

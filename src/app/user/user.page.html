@@ -1,0 +1,47 @@
+<ion-title></ion-title>
+<ion-content>
+
+    <div>Dein Profil</div>
+
+    <form [formGroup]="userUpdateForm" (submit)="updateProfile()" autocomplete="off" class="ion-margin ion-padding">
+
+        <ion-item class="ion-no-padding">
+            <ion-label position="stacked">Vorname</ion-label>
+            <ion-input id="firstName" type="text" maxlength="20" formControlName="name"></ion-input>
+        </ion-item>
+
+        <ion-item class="ion-no-padding">
+            <ion-label position="stacked">Postleitzahl</ion-label>
+            <ion-input type="number" maxlength="5" formControlName="postalCode"></ion-input>
+        </ion-item>
+
+        <ion-button class="button-primary ion-margin-top">Genauen Standort abrufen</ion-button>
+
+        <ion-item class="ion-no-padding">
+            <ion-label position="stacked">E-Mail-Adresse</ion-label>
+            <ion-input type="email" readonly>{{userProfile.email}}</ion-input>
+        </ion-item>
+
+        <ion-item class="ion-no-padding">
+            <ion-label position="stacked">Password</ion-label>
+            <ion-input type="password" readonly>************</ion-input>
+        </ion-item>
+
+        <app-password-reset-button [email]="userProfile.email"></app-password-reset-button>
+
+    </form>
+
+    <div class="ion-margin ion-padding ion-float-left">
+        <div>
+            <a>allgemeine Geschäftsbedingungen</a>
+        </div>
+        <div>
+            <a>Impressum</a>
+        </div>
+        <div>
+            <a>Datenschutz</a>
+        </div>
+
+    </div>
+
+</ion-content>

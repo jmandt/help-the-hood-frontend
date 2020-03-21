@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {RouteReuseStrategy} from '@angular/router';
-import {NGXS_PLUGINS} from '@ngxs/store';
+import {NGXS_PLUGINS, NgxsModule} from '@ngxs/store';
 
 import {IonicModule, IonicRouteStrategy} from '@ionic/angular';
 import {SplashScreen} from '@ionic-native/splash-screen/ngx';
@@ -13,13 +13,13 @@ import {WelcomePageModule} from './welcome/welcome.module';
 import {AngularFirestoreModule} from '@angular/fire/firestore';
 import {AngularFireModule} from '@angular/fire';
 import {IonicStorageModule} from '@ionic/storage';
-import {NgxsModule} from '@ngxs/store';
 import {environment} from '../environments/environment';
 import {AuthModule} from './auth';
 import {AngularFireAuthGuard} from '@angular/fire/auth-guard';
 import {AuthService} from './services/auth';
 import {AngularFireAuthModule} from '@angular/fire/auth';
-import { logPlugin, UserState } from './store';
+import {logPlugin, UserState} from './store';
+import {UserPageModule} from './user/user.module';
 
 
 @NgModule({
@@ -35,9 +35,10 @@ import { logPlugin, UserState } from './store';
         AuthModule,
         IonicStorageModule.forRoot(),
         NgxsModule.forRoot([
-          UserState
+            UserState
         ]),
-        WelcomePageModule
+        WelcomePageModule,
+        UserPageModule,
     ],
     providers: [
         StatusBar,
@@ -46,9 +47,9 @@ import { logPlugin, UserState } from './store';
         AngularFireAuthGuard,
         {provide: RouteReuseStrategy, useClass: IonicRouteStrategy},
         {
-          provide: NGXS_PLUGINS,
-          useValue: logPlugin,
-          multi: true
+            provide: NGXS_PLUGINS,
+            useValue: logPlugin,
+            multi: true
         }
     ],
     bootstrap: [AppComponent]

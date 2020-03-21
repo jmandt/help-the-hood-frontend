@@ -6,6 +6,7 @@ import localeDe from '@angular/common/locales/de';
 
 import {AlgoliaSearchComponent} from './algolia-search';
 import {CategoryIconComponent} from './category-icon/category-icon.component';
+import {PasswordResetButtonComponent} from './password-reset-button/password-reset-button.component';
 
 
 registerLocaleData(localeDe, 'de');
@@ -19,11 +20,13 @@ registerLocaleData(localeDe, 'de');
     ],
     declarations: [
         AlgoliaSearchComponent,
-        CategoryIconComponent
+        CategoryIconComponent,
+        PasswordResetButtonComponent
     ],
     exports: [
         AlgoliaSearchComponent,
-        CategoryIconComponent
+        CategoryIconComponent,
+        PasswordResetButtonComponent
     ],
     providers: [],
 })
