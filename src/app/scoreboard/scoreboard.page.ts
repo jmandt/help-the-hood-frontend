@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import {NewJobModalComponent} from './new-job-modal/new-job-modal.component';
 import {ModalController} from '@ionic/angular';
+import * as moment from 'moment';
+import { map } from 'rxjs/operators';
+
 import {JobsService} from '../services/jobs/jobs.service';
 import {NewJob} from '../models';
 
@@ -15,7 +18,10 @@ export class ScoreboardPage {
 
   constructor(public modalController: ModalController,
               private jobsService: JobsService) {
-    this.jobsService.getAll().subscribe((jobs: NewJob[]) => this.jobs = jobs);
+    const today = moment();
+    this.jobsService.getAll().pipe(
+      map(jobs => jobs.filter(job => today.isSameOrBefore(job.startDate.toDate())))
+    ).subscribe((jobs: NewJob[]) => this.jobs = jobs);
   }
 
   async presentModal() {

@@ -21,7 +21,7 @@ export class JobsService {
     }
 
     getAll() {
-        return this.db.collection('/jobs', ref =>
+        return this.db.collection<NewJob>('/jobs', ref =>
             ref.orderBy('creationTime', 'desc')).valueChanges({idField: 'id'});
     }
 
