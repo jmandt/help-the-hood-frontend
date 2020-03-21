@@ -1,1 +1,9 @@
+@import '../../theme/mixins.scss';
 
+:host {
+  ::ng-deep {
+    .ion-page {
+      padding-top: $header-height;
+    }
+  }
+}
