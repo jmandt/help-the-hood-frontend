@@ -3,19 +3,15 @@
     <ion-icon slot="icon-only" size="1.5" name="close-circle-outline" ></ion-icon>
   </ion-button>
   <div class="ion-padding">
-    <algolia-search (place)="onPlaceSelect($event)" name="place"></algolia-search>
+    <algolia-search (place)="onPlaceSelect($event)" name="place" searchType="address"></algolia-search>
   </div>
 
   <form [formGroup]="newJobForm" autocomplete="off">
 
     <ion-item>
-      <ion-label position="floating">Name</ion-label>
-      <ion-input type="text" formControlName="name"></ion-input>
-    </ion-item>
-    <ion-item>
       <ion-label>Kategorie</ion-label>
       <ion-select formControlName="category" value="shopping" okText="Okay" cancelText="Dismiss">
-        <ion-select-option *ngFor="let item of categories" value="item.value">{{item.displayName}}</ion-select-option>
+        <ion-select-option *ngFor="let item of categories" [value]="item.value">{{item.displayName}}</ion-select-option>
       </ion-select>
     </ion-item>
     <ion-item>
