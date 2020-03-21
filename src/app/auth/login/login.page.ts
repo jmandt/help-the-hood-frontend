@@ -1,8 +1,10 @@
 import {Component} from '@angular/core';
 import {Router} from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import { Storage } from '@ionic/storage';
+import {Store} from '@ngxs/store';
+
 import {AuthService, CoreService} from '../../services';
+import { UserAction } from 'src/app/store';
 
 
 @Component({
@@ -20,7 +22,7 @@ export class LoginPage {
       private router: Router,
       private fb: FormBuilder,
       private coreService: CoreService,
-      private storage: Storage
+      private store: Store
   ) {
     this.createForm();
   }
@@ -35,7 +37,7 @@ export class LoginPage {
   tryLogin() {
     this.authService.doLogin(this.loginForm.value)
         .then(res => {
-          this.storage.set('uid', res.user.uid);
+          this.store.dispatch(new UserAction.Set(res.user));
           this.router.navigate(['/home']);
         }, err => {
           console.log(err);
@@ -71,7 +73,7 @@ export class LoginPage {
     } else {
       this.authService.setLastLogin(res);
     }
-    this.storage.set('uid', res.user.uid);
+    this.store.dispatch(new UserAction.Set(res.user));
     this.coreService.showToastWithButton(
         `Welcome, ${res.user.displayName}`,
         'success'
