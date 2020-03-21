@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder} from '@angular/forms';
 import {User} from '../models';
 import {UserService} from '../services/users/user.service';
-import {State} from '@ngxs/store';
+import {Select} from '@ngxs/store';
 import {UserState} from '../store/state';
 import {Observable} from 'rxjs';
 
@@ -14,7 +14,7 @@ import {Observable} from 'rxjs';
 export class UserPage implements OnInit {
 
     // @ts-ignore
-    @State(UserState) user$: Observable<User>;
+    @Select(UserState) user$: Observable<User>;
 
     userUpdateForm;
     // @ts-ignore
