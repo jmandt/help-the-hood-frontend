@@ -65,7 +65,7 @@ export class LoginPage {
         });
   }
 
-  socialLoginResult(res){
+  socialLoginResult(res) {
     if (res.additionalUserInfo.isNewUser) {
       this.authService.saveUser(res);
     } else {

@@ -13,18 +13,16 @@ import {TabsPage} from '../tabs/tabs.page';
 
 const routes: Routes = [
     {
-        path: '',
+        path: 'login',
         component: LoginPage,
-        children: [
-            {
-                path: 'password-forgot',
-                component: PwForgotPage
-            },
-            {
-                path: 'sign-up',
-                component: SignupPage
-            }
-        ]
+    },
+    {
+        path: 'password-forgot',
+        component: PwForgotPage
+    },
+    {
+        path: 'sign-up',
+        component: SignupPage
     }
     ];
 
