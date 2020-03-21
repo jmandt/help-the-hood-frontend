@@ -9,6 +9,8 @@ import {Categories, Category, NewJob} from '../../models';
 })
 export class JobDetailsComponent implements OnInit {
   @Input() id: string;
+  @Input() jobUid: string;
+
 
   job: NewJob;
   categories: Category [] = Categories;
@@ -19,9 +21,9 @@ export class JobDetailsComponent implements OnInit {
 
 
   ngOnInit() {
-    this.jobService.getJobById(this.id).subscribe((job: NewJob) => {
-      this.job = job;
-      this.selectedCategory = this.categories.find(item => item.value === job.category);
+    this.jobService.getJobById(this.jobUid, this.id).subscribe((job: NewJob []) => {
+      this.job = job[0];
+      this.selectedCategory = this.categories.find(item => item.value === this.job.category);
     });
   }
 

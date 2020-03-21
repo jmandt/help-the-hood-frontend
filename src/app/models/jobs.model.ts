@@ -5,6 +5,7 @@ export interface NewJob {
     dueDate: string;
     description: string;
     location: Location;
+    uid: string;
 }
 
 export interface Location {

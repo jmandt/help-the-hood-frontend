@@ -1,10 +1,10 @@
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" *ngIf="jobs">
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button color="tertiary" (click)="presentModal()">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>
 
-  <app-job-card *ngFor="let job of jobs" [id]="job.id"></app-job-card>
+  <app-job-card *ngFor="let job of jobs" [jobUid]="job.uid" [id]="job.id"></app-job-card>
 
 </ion-content>
