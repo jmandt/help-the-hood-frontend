@@ -1,19 +1,19 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { NewRequestModalComponent } from './new-request-modal.component';
+import { NewJobModalComponent } from './new-job-modal.component';
 
-describe('NewRequestModalComponent', () => {
-  let component: NewRequestModalComponent;
-  let fixture: ComponentFixture<NewRequestModalComponent>;
+describe('NewJobModalComponent', () => {
+  let component: NewJobModalComponent;
+  let fixture: ComponentFixture<NewJobModalComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ NewRequestModalComponent ],
+      declarations: [ NewJobModalComponent ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(NewRequestModalComponent);
+    fixture = TestBed.createComponent(NewJobModalComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

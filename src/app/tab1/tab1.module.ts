@@ -5,7 +5,7 @@ import {CommonModule} from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {Tab1Page} from './tab1.page';
 import {ExploreContainerComponentModule} from '../explore-container/explore-container.module';
-import {NewRequestModalComponent} from './new-request-modal/new-request-modal.component';
+import {NewJobModalComponent} from './new-job-modal/new-job-modal.component';
 import {SharedComponentModule} from '../shared';
 
 @NgModule({
@@ -18,8 +18,8 @@ import {SharedComponentModule} from '../shared';
         SharedComponentModule,
         ReactiveFormsModule
     ],
-    declarations: [Tab1Page, NewRequestModalComponent],
-    entryComponents: [NewRequestModalComponent]
+    declarations: [Tab1Page, NewJobModalComponent],
+    entryComponents: [NewJobModalComponent]
 })
 export class Tab1PageModule {
 }

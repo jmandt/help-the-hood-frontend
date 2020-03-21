@@ -1,4 +1,4 @@
-export interface NewRequest {
+export interface NewJob {
     name: string;
     category: string;
     dueDate: string;

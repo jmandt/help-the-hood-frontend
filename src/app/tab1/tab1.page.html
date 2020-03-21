@@ -19,6 +19,9 @@
     </ion-fab-button>
   </ion-fab>
 
-
+  <ion-card *ngFor="let job of jobs">
+    <ion-card-subtitle>{{job.category}}</ion-card-subtitle>
+    <ion-card-content>{{job.name}}</ion-card-content>
+  </ion-card>
 
 </ion-content>
