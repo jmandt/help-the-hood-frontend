@@ -12,6 +12,7 @@ import {WelcomePageModule} from './welcome/welcome.module';
 import {AngularFirestoreModule} from '@angular/fire/firestore';
 import {AngularFireModule} from '@angular/fire';
 import {IonicStorageModule} from '@ionic/storage';
+import {NgxsModule} from '@ngxs/store';
 import {environment} from '../environments/environment';
 import {AuthModule} from './auth';
 import {AngularFireAuthGuard} from '@angular/fire/auth-guard';
@@ -22,13 +23,16 @@ import {AngularFireAuthModule} from '@angular/fire/auth';
 @NgModule({
     declarations: [AppComponent],
     entryComponents: [],
-    imports: [BrowserModule, IonicModule.forRoot(),
+    imports: [
+        BrowserModule,
+        IonicModule.forRoot(),
         AngularFireModule.initializeApp(environment.firebaseConfig),
         AngularFirestoreModule,
         AppRoutingModule,
         AngularFireAuthModule,
         AuthModule,
         IonicStorageModule.forRoot(),
+        NgxsModule.forRoot([]),
         WelcomePageModule
     ],
     providers: [
