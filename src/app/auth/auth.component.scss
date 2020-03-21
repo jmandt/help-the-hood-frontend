@@ -1,0 +1,5 @@
+@import '../../theme/mixins.scss';
+
+:host {
+  padding-top: $header-height;
+}

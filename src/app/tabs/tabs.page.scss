@@ -3,7 +3,7 @@
 :host {
   ::ng-deep {
     .ion-page {
-      padding-top: 56px;
+      padding-top: $header-height;
     }
   }
 }
