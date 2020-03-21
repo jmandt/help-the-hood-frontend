@@ -3,3 +3,8 @@
 :host {
   padding-top: $header-height;
 }
+
+.alert {
+  color: var(--ion-color-danger-tint);
+}
+

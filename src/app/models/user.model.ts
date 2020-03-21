@@ -5,4 +5,5 @@ export interface User {
   lastLogin: Date;
   name: string;
   profileImageUrl: string;
+  uid: string;
 }

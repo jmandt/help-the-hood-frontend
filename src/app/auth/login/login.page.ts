@@ -52,43 +52,4 @@ export class LoginPage {
           this.coreService.showToast(this.errorMessage, 'primary');
         });
   }
-  googleLogin() {
-    this.authService
-        .googleLogin()
-        .then(res => {
-          this.socialLoginResult(res);
-        })
-        .catch(err => {
-          this.coreService.showToast(err.message, 'primary');
-        });
-  }
-
-  facebookLogin() {
-    this.authService
-        .facebookLogin()
-        .then(res => {
-          this.socialLoginResult(res);
-        })
-        .catch(err => {
-          this.coreService.showToast(err.message, 'primary');
-        });
-  }
-
-  socialLoginResult(res) {
-    if (res.additionalUserInfo.isNewUser) {
-      this.authService.saveUser(res);
-    } else {
-      this.authService.setLastLogin(res);
-    }
-    this.db.collection('user').doc(res.user.uid).valueChanges().pipe(
-      take(1)
-    ).subscribe((user: User) => {
-      this.store.dispatch(new UserAction.Set(user));
-    });
-    this.coreService.showToastWithButton(
-        `Welcome, ${res.user.displayName}`,
-        'success'
-    );
-    this.router.navigateByUrl('/profile-overview');
-  }
 }

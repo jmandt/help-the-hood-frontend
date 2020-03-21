@@ -3,26 +3,27 @@
         <ion-buttons slot="start">
             <ion-back-button></ion-back-button>
         </ion-buttons>
-        <ion-title>Passwort zurücksetzen</ion-title>
     </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
-        <div class="mt3">
-            Enter the email address associated with your account, and we’ll
-            email you a link to reset your password.
-        </div>
+<ion-content class="ion-margin ion-padding">
+    <div>
+        Bitte trag deine E-Mail-Adresse ein. Wir senden dir eine E-Mail zu um dein Passwort zurückzusetzen.
+    </div>
 
-        <form [formGroup]="forgotPasswordForm" autocomplete="off">
+    <form [formGroup]="forgotPasswordForm" autocomplete="off">
 
-            <ion-item>
-                <ion-label position="floating">Emailadresse</ion-label>
-                <ion-input type="email" formControlName="email">
-                </ion-input>
-            </ion-item>
+        <ion-item class="ion-margin-top ion-no-padding">
+            <ion-label position="stacked">E-Mail-Adresse</ion-label>
+            <ion-input type="email" formControlName="email">
+            </ion-input>
+        </ion-item>
 
-        </form>
-        <ion-button (click)="reset_password()" expand="block" class="w-100 mt3" [disabled]="!forgotPasswordForm.valid">
-            Send reset link
+    </form>
+    <ion-row class="ion-margin-top">
+        <ion-button  expand="full" style="width: 100%"  (click)="reset_password()" [disabled]="!forgotPasswordForm.valid">
+            Link zusenden
         </ion-button>
+    </ion-row>
+
 </ion-content>

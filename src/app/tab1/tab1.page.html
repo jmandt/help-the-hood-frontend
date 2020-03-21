@@ -5,9 +5,6 @@
     </ion-fab-button>
   </ion-fab>
 
-  <ion-card *ngFor="let job of jobs">
-    <ion-card-subtitle>{{job.category}}</ion-card-subtitle>
-    <ion-card-content>{{job.name}}</ion-card-content>
-  </ion-card>
+  <app-job-card *ngFor="let job of jobs" [id]="job.id"></app-job-card>
 
 </ion-content>

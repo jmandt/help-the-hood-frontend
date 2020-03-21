@@ -32,3 +32,26 @@
 body {
   font-family: 'Roboto', sans-serif;
 }
+
+.details-modal .modal-wrapper {
+  height:70%;
+  width: 90%;
+  top: 15%;
+  border-radius: 8px;
+  position: absolute;
+  display: block;
+}
+
+.button-primary {
+  --color: var(--ion-color-primary-tint) !important;
+  --background: var(--ion-color-primary-contrast) !important;
+  --border-radius: 8px !important;
+  width: 100% !important;
+}
+
+.button-secondary {
+  --color: var(--ion-color-primary-tint) !important;
+  --background: var(--ion-color-medium-tint) !important;
+  --border-radius: 8px !important;
+  width: 100% !important;
+}

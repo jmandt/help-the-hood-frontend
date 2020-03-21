@@ -10,6 +10,7 @@ import {SharedComponentModule} from '../shared';
 import {PwForgotPage} from './pw-forgot/pw-forgot.page';
 import {LoginPage} from './login/login.page';
 import {TabsPage} from '../tabs/tabs.page';
+import {SocialLoginComponent} from './social-login/social-login.component';
 
 const routes: Routes = [
     {
@@ -38,7 +39,8 @@ const routes: Routes = [
     declarations: [
         SignupPage,
         LoginPage,
-        PwForgotPage
+        PwForgotPage,
+        SocialLoginComponent
     ]
 })
 export class AuthModule {
