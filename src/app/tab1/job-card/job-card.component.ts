@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Categories, Category, NewJob} from '../../models/jobs.models';
+import {Categories, Category, NewJob} from '../../models';
 import {JobsService} from '../../services/jobs';
 import {JobDetailsComponent} from '../job-details/job-details.component';
 import {ModalController} from '@ionic/angular';

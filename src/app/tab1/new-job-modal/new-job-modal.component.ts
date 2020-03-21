@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {JobsService} from '../../services/jobs/jobs.service';
 import {ModalController} from '@ionic/angular';
-import {Categories, Category} from '../../models/jobs.models';
+import {Categories, Category} from '../../models';
 
 @Component({
   selector: 'app-new-job-modal',
@@ -38,7 +38,7 @@ export class NewJobModalComponent implements OnInit {
 
   publishJob() {
     console.log(this.newJobForm.value)
-    this.jobsService.store(this.newJobForm.value);
+    this.jobsService.storeNewJob(this.newJobForm.value);
     this.modalCtrl.dismiss();
   }
 }

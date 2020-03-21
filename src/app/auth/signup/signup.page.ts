@@ -28,9 +28,9 @@ export class SignupPage {
                 Validators.required,
                 Validators.minLength(2)
             ])),
-            lastName: new FormControl('', Validators.compose([
+            postalCode: new FormControl(Validators.compose([
                 Validators.required,
-                Validators.minLength(4)
+                Validators.minLength(5), Validators.maxLength(5)
             ])),
             password: new FormControl(
                 '',

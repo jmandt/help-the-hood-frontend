@@ -1,58 +1,56 @@
-<ion-header>
-    <ion-toolbar>
-        <ion-buttons slot="start">
-            <ion-back-button></ion-back-button>
-        </ion-buttons>
-        <ion-title>Registrieren</ion-title>
-    </ion-toolbar>
-</ion-header>
+<ion-content class="ion-margin ion-padding-horizontal">
+    <form [formGroup]="registerForm" autocomplete="off" class="ion-margin-top">
 
-<ion-content padding>
-        <form [formGroup]="registerForm" autocomplete="off">
+        <ion-item>
+            <ion-label position="stacked">Vorname</ion-label>
+            <ion-input id="firstName" type="text" maxlength="20" formControlName="firstName"></ion-input>
+        </ion-item>
 
-            <ion-item>
-                <ion-label position="floating">Vorname</ion-label>
-                <ion-input id="firstName" type="text" maxlength="20" formControlName="firstName"></ion-input>
-            </ion-item>
+        <ion-item>
+            <ion-label position="stacked">Postleitzahl</ion-label>
+            <ion-input type="number" maxlength="5" formControlName="postalCode"></ion-input>
+        </ion-item>
 
-            <ion-item>
-                <ion-label position="floating">Nachname</ion-label>
-                <ion-input type="text" maxlength="20" formControlName="lastName"></ion-input>
-            </ion-item>
+        <ion-item>
+            <ion-label position="stacked">E-Mail-Adresse</ion-label>
+            <ion-input type="email" formControlName="email"></ion-input>
+        </ion-item>
 
-            <ion-item>
-                <ion-label position="floating">Emailadresse</ion-label>
-                <ion-input type="email" formControlName="email"></ion-input>
-            </ion-item>
-
-            <ion-item>
-                <ion-label position="floating">Password</ion-label>
-                <ion-input type="password" formControlName="password"></ion-input>
-            </ion-item>
+        <ion-item>
+            <ion-label position="stacked">Password</ion-label>
+            <ion-input type="password" formControlName="password"></ion-input>
+        </ion-item>
 
 
-            <div *ngIf="!registerForm.controls.email.valid && (registerForm.controls.email.dirty)" class="alert">
-                E-Mail is required
-            </div>
-            <div *ngIf="!registerForm.controls.firstName.valid && (registerForm.controls.firstName.dirty)"
-                 class="alert">First
-                Name is required (at least 2 letters)
-            </div>
-            <div *ngIf="!registerForm.controls.lastName.valid && (registerForm.controls.lastName.dirty)"
-                 class="alert">
-                Last
-                Name is required (at least 3 letters)
-            </div>
-            <div *ngIf="!registerForm.controls.password.valid && (registerForm.controls.password.dirty)"
-                 class="alert">Password is required
-            </div>
-        </form>
-        <ion-button expand="block" class="w-100 mt3" (click)="register()" [disabled]="!registerForm.valid">
+        <div *ngIf="!registerForm.controls.email.valid && (registerForm.controls.email.dirty)" class="alert">
+            E-Mail is required
+        </div>
+        <div *ngIf="!registerForm.controls.firstName.valid && (registerForm.controls.firstName.dirty)"
+             class="alert">First
+            Name is required (at least 2 letters)
+        </div>
+        <div *ngIf="!registerForm.controls.postalCode.valid && (registerForm.controls.postalCode.dirty)"
+             class="alert">
+            Last
+            Name is required (at least 3 letters)
+        </div>
+        <div *ngIf="!registerForm.controls.password.valid && (registerForm.controls.password.dirty)"
+             class="alert">Password is required
+        </div>
+    </form>
+
+    <ion-row>
+        <ion-button expand="full" class="ion-margin button-primary" (click)="register()"
+                    [disabled]="!registerForm.valid">
             Jetzt registrieren
         </ion-button>
-        <hr/>
-        <div class="mb3">
-            <ion-text>Du hast schon einen Account?</ion-text>
-            <a routerLink="/auth/login" routerDirection="back"> Hier anmelden</a>
-        </div>
+    </ion-row>
+
+
+    <app-social-login></app-social-login>
+
+    <div class="ion-text-center">
+        <a routerLink="/auth/login" routerDirection="back"> Hier anmelden</a>
+    </div>
+
 </ion-content>

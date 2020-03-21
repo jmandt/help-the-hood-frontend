@@ -16,6 +16,9 @@ import { User } from './models';
   styleUrls: ['app.component.scss']
 })
 export class AppComponent {
+
+  uid;
+
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
@@ -33,10 +36,10 @@ export class AppComponent {
       this.splashScreen.hide();
       this.afAuth.user.pipe(
         filter(user => !!user),
-        map(user => user.uid),
+        map(user => this.uid = user.uid ),
         switchMap(id => this.db.collection('user').doc(id).valueChanges())
       ).subscribe((user: User) => {
-        this.store.dispatch(new UserAction.Set(user));
+        this.store.dispatch(new UserAction.Set({uid: this.uid, ...user}));
       });
     });
   }
