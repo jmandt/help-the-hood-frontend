@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {AngularFirestore} from '@angular/fire/firestore';
 import {Select, Store} from '@ngxs/store';
+import * as firebase from 'firebase/app'
 
 import {Job, User} from 'src/app/models';
 import {UserState} from 'src/app/store/state';
@@ -71,13 +72,17 @@ export class JobsService {
     }
 
     markAsDone(jobId, committedUserId, takenId) {
-        this.db.collection('user').doc(this.user.uid)
-            .collection('jobs').doc(jobId)
-            .update({status: 'done', doneChangeTime: new Date()});
-
         this.db.collection('user').doc(committedUserId)
-            .collection('jobsTaken').doc(takenId)
-            .update({status: 'done', doneChangeTime: new Date()});
+            .update({hoodDollars: firebase.firestore.FieldValue.increment(1)})
+            .then(() => {
+                this.db.collection('user').doc(this.user.uid)
+                    .collection('jobs').doc(jobId)
+                    .update({status: 'done', doneChangeTime: new Date()});
+
+                this.db.collection('user').doc(committedUserId)
+                    .collection('jobsTaken').doc(takenId)
+                    .update({status: 'done', doneChangeTime: new Date()});
+            })
     }
 
 }
