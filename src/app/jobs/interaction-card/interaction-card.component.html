@@ -1,12 +1,12 @@
 <ion-card *ngIf="action==='help'" class="ion-no-margin">
 
-    <div class="do-for-who">
+    <div class="yellow-card-header">
             {{selectedCategory.displayName}} für {{jobTaken.name}}
         <ion-icon class="message-icon" slot="end" name="chatbox-outline"></ion-icon>
     </div>
-    <ion-card-content class="ion-no-padding">
+    <ion-card-content>
         <div *ngIf="jobTaken.status == 'committed'">
-            <ion-row class="ion-no-margin">
+            <ion-row>
                 <ion-col size="3" class="ion-text-center">
                     <app-circled-icon name="help-outline"></app-circled-icon>
                 </ion-col>
@@ -40,8 +40,8 @@
 
 <ion-card *ngIf="action==='inNeed'">
     <div *ngIf="jobTaken.status == 'new'">
-        <div class="do-for-who">Du suchst jemanden zum {{selectedCategory.displayName}}</div>
-        <ion-card-content class="content">
+        <div class="yellow-card-header">Du suchst jemanden zum {{selectedCategory.displayName}}</div>
+        <ion-card-content>
             <ion-row>
                 <ion-col>
                     Deine Anfrage wurde gestellt.
@@ -50,7 +50,7 @@
         </ion-card-content>
     </div>
     <div *ngIf="jobTaken.status == 'committed'">
-        <div class="do-for-who">{{jobTaken.committedBy.name}}
+        <div class="yellow-card-header">{{jobTaken.committedBy.name}}
             möchte {{selectedCategory.displayName}}</div>
         <ion-card-content >
             <ion-row>
@@ -70,7 +70,7 @@
         </ion-card-content>
     </div>
     <div *ngIf="jobTaken.status == 'inProgress'">
-        <div class="do-for-who">{{jobTaken.committedBy.name}}
+        <div class="yellow-card-header">{{jobTaken.committedBy.name}}
             möchte {{selectedCategory.displayName}}</div>
         <ion-card-content>
             <ion-row>
@@ -82,7 +82,7 @@
         </ion-card-content>
     </div>
     <div *ngIf="jobTaken.status == 'done'">
-        <div class="do-for-who">Du hast hilfe erhalten</div>
+        <div class="yellow-card-header">Du hast hilfe erhalten</div>
         <ion-card-content>
             <ion-row>
                 <ion-col size="3">
