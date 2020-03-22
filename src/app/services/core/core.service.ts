@@ -13,7 +13,7 @@ export class CoreService {
         const toast = await this.toastCtrl.create({
             message: msg,
             duration: 2000,
-            position: 'top',
+            position: 'bottom',
             color
         });
 

@@ -1,38 +1,43 @@
-<ion-content class="ion-margin ion-padding-horizontal">
-    <ion-grid>
-        <form [formGroup]="loginForm" autocomplete="off">
-            <ion-item>
-                <ion-label position="floating">Emailadresse</ion-label>
-                <ion-input type="email" formControlName="email"></ion-input>
-            </ion-item>
+<ion-content class="ion-margin">
+    <ion-card class="ion-no-padding">
+        <div class="yellow-card-header">Anmeldung</div>
+        <ion-card-content class="ion-no-padding">
+            <ion-grid>
+                <form [formGroup]="loginForm">
+                    <ion-item>
+                        <ion-label position="stacked">Emailadresse</ion-label>
+                        <ion-input type="email" formControlName="email"></ion-input>
+                    </ion-item>
 
-            <ion-item>
-                <ion-label position="floating">Password</ion-label>
-                <ion-input type="password" formControlName="password"></ion-input>
-            </ion-item>
-            <div *ngIf="!loginForm.controls.email.valid && (loginForm.controls.email.dirty)" class="alert">Valid
-                E-Mail is required
-            </div>
-        </form>
-        <ion-row>
-            <ion-button expand="full" class="ion-margin button-primary" [disabled]="!loginForm.valid"
-                        (click)="tryLogin()">
-                Login
-            </ion-button>
-        </ion-row>
+                    <ion-item class="ion-margin-top">
+                        <ion-label position="stacked">Password</ion-label>
+                        <ion-input type="password" formControlName="password"></ion-input>
+                    </ion-item>
+                    <div *ngIf="!loginForm.controls.email.valid && (loginForm.controls.email.dirty)" class="alert">Valid
+                        E-Mail is required
+                    </div>
+                </form>
+                <ion-row class="ion-margin-top">
+                    <ion-button class="ion-margin button-primary" [disabled]="!loginForm.valid"
+                                (click)="tryLogin()">
+                        Login
+                    </ion-button>
+                </ion-row>
 
 
-        <app-social-login></app-social-login>
+                <app-social-login></app-social-login>
 
 
-        <div class="ion-text-center">
-            <a routerLink="/auth/sign-up" routerDirection="forward">Registrieren</a>
-        </div>
+                <div class="ion-text-center">
+                    <a routerLink="/auth/sign-up" routerDirection="forward">Registrieren</a>
+                </div>
 
-        <div class="ion-text-center ion-margin-top">
-            <a routerLink="/auth/password-forgot" routerDirection="forward">
-                Passwort vergessen?
-            </a>
-        </div>
-    </ion-grid>
+                <div class="ion-text-center ion-margin">
+                    <a routerLink="/auth/password-forgot" routerDirection="forward">
+                        Passwort vergessen?
+                    </a>
+                </div>
+            </ion-grid>
+        </ion-card-content>
+    </ion-card>
 </ion-content>

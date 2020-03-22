@@ -1,56 +1,60 @@
-<ion-content class="ion-margin ion-padding-horizontal">
-    <form [formGroup]="registerForm" autocomplete="off" class="ion-margin-top">
+<ion-content class="ion-margin">
+    <ion-card class="ion-no-padding">
+        <div class="yellow-card-header">Registrier dich und hilf mit</div>
+        <ion-card-content class="ion-no-padding">
+            <form [formGroup]="registerForm" autocomplete="off" class="ion-margin-top">
 
-        <ion-item>
-            <ion-label position="stacked">Vorname</ion-label>
-            <ion-input id="firstName" type="text" maxlength="20" formControlName="firstName"></ion-input>
-        </ion-item>
+                <ion-item>
+                    <ion-label position="stacked">Vorname</ion-label>
+                    <ion-input id="firstName" type="text" maxlength="20" formControlName="firstName"></ion-input>
+                </ion-item>
 
-        <ion-item>
-            <ion-label position="stacked">Postleitzahl</ion-label>
-            <ion-input type="number" maxlength="5" formControlName="postalCode"></ion-input>
-        </ion-item>
+                <ion-item>
+                    <ion-label position="stacked">Postleitzahl</ion-label>
+                    <ion-input type="number" maxlength="5" formControlName="postalCode"></ion-input>
+                </ion-item>
 
-        <ion-item>
-            <ion-label position="stacked">E-Mail-Adresse</ion-label>
-            <ion-input type="email" formControlName="email"></ion-input>
-        </ion-item>
+                <ion-item>
+                    <ion-label position="stacked">E-Mail-Adresse</ion-label>
+                    <ion-input type="email" formControlName="email"></ion-input>
+                </ion-item>
 
-        <ion-item>
-            <ion-label position="stacked">Password</ion-label>
-            <ion-input type="password" formControlName="password"></ion-input>
-        </ion-item>
-
-
-        <div *ngIf="!registerForm.controls.email.valid && (registerForm.controls.email.dirty)" class="alert">
-            E-Mail is required
-        </div>
-        <div *ngIf="!registerForm.controls.firstName.valid && (registerForm.controls.firstName.dirty)"
-             class="alert">First
-            Name is required (at least 2 letters)
-        </div>
-        <div *ngIf="!registerForm.controls.postalCode.valid && (registerForm.controls.postalCode.dirty)"
-             class="alert">
-            Last
-            Name is required (at least 3 letters)
-        </div>
-        <div *ngIf="!registerForm.controls.password.valid && (registerForm.controls.password.dirty)"
-             class="alert">Password is required
-        </div>
-    </form>
-
-    <ion-row>
-        <ion-button expand="full" class="ion-margin button-primary" (click)="register()"
-                    [disabled]="!registerForm.valid">
-            Jetzt registrieren
-        </ion-button>
-    </ion-row>
+                <ion-item>
+                    <ion-label position="stacked">Password</ion-label>
+                    <ion-input type="password" formControlName="password"></ion-input>
+                </ion-item>
 
 
-    <app-social-login></app-social-login>
+                <div *ngIf="!registerForm.controls.email.valid && (registerForm.controls.email.dirty)" class="alert">
+                    E-Mail is required
+                </div>
+                <div *ngIf="!registerForm.controls.firstName.valid && (registerForm.controls.firstName.dirty)"
+                     class="alert">First
+                    Name is required (at least 2 letters)
+                </div>
+                <div *ngIf="!registerForm.controls.postalCode.valid && (registerForm.controls.postalCode.dirty)"
+                     class="alert">
+                    Last
+                    Name is required (at least 3 letters)
+                </div>
+                <div *ngIf="!registerForm.controls.password.valid && (registerForm.controls.password.dirty)"
+                     class="alert">Password is required
+                </div>
+            </form>
 
-    <div class="ion-text-center">
-        <a routerLink="/auth/login" routerDirection="back"> Hier anmelden</a>
-    </div>
+            <ion-row>
+                <ion-button expand="full" class="ion-margin button-primary" (click)="register()"
+                            [disabled]="!registerForm.valid">
+                    Jetzt registrieren
+                </ion-button>
+            </ion-row>
 
+
+            <app-social-login></app-social-login>
+
+            <div class="ion-text-center ion-margin-bottom">
+                <a routerLink="/auth/login" routerDirection="back"> Hier anmelden</a>
+            </div>
+        </ion-card-content>
+    </ion-card>
 </ion-content>
