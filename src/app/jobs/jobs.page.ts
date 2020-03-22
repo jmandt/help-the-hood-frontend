@@ -12,8 +12,8 @@ import {User} from '../models';
 })
 export class JobsPage {
 
-    jobsTaken;
-    jobsPosted;
+    jobsTaken = [];
+    jobsPosted = [];
     jobsDoneByMe = [];
     jobsDoneForMe  = [];
     selectedSegment = 'helping';
