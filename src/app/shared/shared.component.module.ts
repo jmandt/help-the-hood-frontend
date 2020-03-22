@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {CommonModule, registerLocaleData} from '@angular/common';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {IonicModule} from '@ionic/angular';
 import localeDe from '@angular/common/locales/de';
 
@@ -18,6 +18,7 @@ registerLocaleData(localeDe, 'de');
         CommonModule,
         FormsModule,
         IonicModule,
+        ReactiveFormsModule
     ],
     declarations: [
         AlgoliaSearchComponent,

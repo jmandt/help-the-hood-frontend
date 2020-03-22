@@ -1,3 +1,5 @@
+import {Location} from './jobs.model';
+
 export interface User {
   dateCreated: Date;
   email: string;
@@ -8,4 +10,5 @@ export interface User {
   uid: string;
   postalCode: number;
   hoodDollars: number;
+  location: Location;
 }

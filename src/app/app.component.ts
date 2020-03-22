@@ -1,14 +1,15 @@
 import { Component } from '@angular/core';
-import { Store } from '@ngxs/store';
+import {Select, Store} from '@ngxs/store';
 import { switchMap, filter, map } from 'rxjs/operators';
 
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
-import { UserAction } from './store';
+import {UserAction, UserState} from './store';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { User } from './models';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -18,6 +19,8 @@ import { User } from './models';
 export class AppComponent {
 
   uid;
+  @Select(UserState) user$: Observable<User>;
+  userIsAuthenticated = false;
 
   constructor(
     private platform: Platform,
@@ -25,9 +28,10 @@ export class AppComponent {
     private statusBar: StatusBar,
     private store: Store,
     public afAuth: AngularFireAuth,
-    private db: AngularFirestore
+    private db: AngularFirestore,
   ) {
     this.initializeApp();
+    this.user$.subscribe(user => this.userIsAuthenticated =  user.uid !== undefined);
   }
 
   initializeApp() {

@@ -13,7 +13,7 @@
   },
   "private": true,
   "resolutions": {
-    "@babel/preset-env": "^7.8.7"
+    "@babel/preset-env": "^7.8.0"
   },
   "dependencies": {
     "@angular/common": "~8.2.14",

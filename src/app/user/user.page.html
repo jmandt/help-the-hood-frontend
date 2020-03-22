@@ -1,47 +1,48 @@
-<ion-title></ion-title>
-<ion-content>
+<ion-content *ngIf="userProfile" fullscreen="true" class="ion-margin-top">
 
-    <div>Dein Profil</div>
-
-    <form [formGroup]="userUpdateForm" (submit)="updateProfile()" autocomplete="off" class="ion-margin ion-padding">
-
-        <ion-item class="ion-no-padding">
-            <ion-label position="stacked">Vorname</ion-label>
-            <ion-input id="firstName" type="text" maxlength="20" formControlName="name"></ion-input>
-        </ion-item>
-
-        <ion-item class="ion-no-padding">
-            <ion-label position="stacked">Postleitzahl</ion-label>
-            <ion-input type="number" maxlength="5" formControlName="postalCode"></ion-input>
-        </ion-item>
-
-        <ion-button class="button-primary ion-margin-top">Genauen Standort abrufen</ion-button>
-
-        <ion-item class="ion-no-padding">
-            <ion-label position="stacked">E-Mail-Adresse</ion-label>
-            <ion-input type="email" readonly>{{userProfile.email}}</ion-input>
-        </ion-item>
-
-        <ion-item class="ion-no-padding">
-            <ion-label position="stacked">Password</ion-label>
-            <ion-input type="password" readonly>************</ion-input>
-        </ion-item>
-
-        <app-password-reset-button [email]="userProfile.email"></app-password-reset-button>
-
-    </form>
-
-    <div class="ion-margin ion-padding ion-float-left">
-        <div>
-            <a>allgemeine Geschäftsbedingungen</a>
+    <ion-card class="ion-margin-top" style="margin-top: 5rem;">
+        <div class="yellow-card-header">Dein Profil
+            <div class="end" (click)="doLogout()">Logout</div>
         </div>
-        <div>
-            <a>Impressum</a>
-        </div>
-        <div>
-            <a>Datenschutz</a>
-        </div>
+        <ion-card-content>
+            <ion-item class="ion-no-padding">
+                <ion-label position="stacked">Vorname</ion-label>
+                <ion-input id="firstName" type="text" maxlength="20" [(ngModel)]="name"></ion-input>
+            </ion-item>
 
-    </div>
+            <ion-item *ngIf="shownlocation" class="ion-no-padding">
+                <ion-label position="stacked">Deine Hood</ion-label>
+                <div>{{shownlocation}}</div>
+            </ion-item>
 
+            <div class="ion-margin-top">
+                <algolia-search class="ion-margin-top" (place)="onPlaceSelect($event)" name="place" searchType="address"></algolia-search>
+            </div>
+
+            <div class="ion-text-center ion-margin">
+                <ion-button (click)="updateProfile()">
+                    Speichern
+                </ion-button>
+            </div>
+
+            <ion-item class="ion-no-padding">
+                <ion-label position="stacked">E-Mail-Adresse</ion-label>
+                <div readonly>{{userProfile.email}}</div>
+            </ion-item>
+
+
+            <div class="ion-margin-top">
+                <app-password-reset-button [email]="userProfile.email" title="Passwort ändern"></app-password-reset-button>
+            </div>
+
+            <div class="ion-margin ion-padding, ion-text-center">
+                <a>AGB</a>,
+
+                <a>Impressum</a>,
+
+                <a>Datenschutz</a>
+            </div>
+        </ion-card-content>
+
+    </ion-card>
 </ion-content>

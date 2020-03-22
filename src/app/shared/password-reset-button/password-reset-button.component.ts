@@ -10,6 +10,7 @@ import {CoreService} from '../../services/core';
 })
 export class PasswordResetButtonComponent implements OnInit{
     @Input() email = undefined;
+    @Input() title = 'Link senden';
 
     EMAIL_REGEX = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     public forgotPasswordForm: FormGroup;
