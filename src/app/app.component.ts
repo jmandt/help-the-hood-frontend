@@ -31,7 +31,7 @@ export class AppComponent {
     private db: AngularFirestore,
   ) {
     this.initializeApp();
-    this.user$.subscribe(user => this.userIsAuthenticated =  user.uid !== undefined);
+    this.user$.subscribe(user => this.userIsAuthenticated = !!user && user.uid !== undefined);
   }
 
   initializeApp() {

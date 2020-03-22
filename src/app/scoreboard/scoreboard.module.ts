@@ -3,6 +3,8 @@ import {RouterModule} from '@angular/router';
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { canActivate, redirectUnauthorizedTo } from '@angular/fire/auth-guard';
+
 import {ScoreboardPage} from './scoreboard.page';
 import {NewJobModalComponent} from './new-job-modal/new-job-modal.component';
 import {SharedComponentModule} from '../shared';
@@ -14,7 +16,7 @@ import {JobCardComponent} from './job-card/job-card.component';
         IonicModule,
         CommonModule,
         FormsModule,
-        RouterModule.forChild([{path: '', component: ScoreboardPage}]),
+        RouterModule.forChild([{path: '', component: ScoreboardPage, ...canActivate(redirectUnauthorizedTo(['/auth/login']))}]),
         SharedComponentModule,
         ReactiveFormsModule
     ],

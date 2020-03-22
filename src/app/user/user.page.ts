@@ -31,7 +31,7 @@ export class UserPage {
             if (user.uid !== undefined) {
                 this.userProfile = user;
                 this.location = user.location;
-                this.shownlocation = `${user.location.postalCode} ${user.location.city}`;
+                this.shownlocation = user.location ? `${user.location.postalCode} ${user.location.city}` : '';
                 this.name = user.name;
             }
         });
