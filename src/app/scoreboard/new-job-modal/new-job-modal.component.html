@@ -1,7 +1,12 @@
+<ion-header translucent>
+  <ion-toolbar>
+    <ion-title>Neuer Job</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="modalCtrl.dismiss()">Schließen</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
 <ion-content class="ion-margin">
-  <ion-button (click)="modalCtrl.dismiss()">
-    <ion-icon slot="icon-only" size="1.5" name="close-circle-outline" ></ion-icon>
-  </ion-button>
   <div class="ion-padding">
     <algolia-search (place)="onPlaceSelect($event)" name="place" searchType="address"></algolia-search>
   </div>
@@ -16,15 +21,15 @@
     </ion-item>
     <ion-item>
       <ion-label position="floating">Beschreibung</ion-label>
-      <ion-input type="text" formControlName="description"></ion-input>
+      <ion-textarea formControlName="description"></ion-textarea>
     </ion-item>
-   <!-- <ion-item>
-      <ion-label position="fixed">Ab wann?</ion-label>
-      <ion-input type="date" formControlName="startDate"></ion-input>
-    </ion-item>-->
     <ion-item>
-      <ion-label position="fixed">Bis wann?</ion-label>
-      <ion-input type="date" formControlName="dueDate"></ion-input>
+      <ion-label position="fixed">Wann?</ion-label>
+      <ion-datetime displayFormat="D MMM YYYY H:mm" [min]="now" formControlName="startDate"></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Bis wann? (optional)</ion-label>
+      <ion-datetime displayFormat="D MMM YYYY H:mm" [min]="now" formControlName="endDate"></ion-datetime>
     </ion-item>
 
     <div class="ion-margin-top ion-text-center">
