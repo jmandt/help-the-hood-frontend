@@ -5,7 +5,7 @@ import * as moment from 'moment';
 import { map } from 'rxjs/operators';
 
 import {JobsService} from '../services/jobs/jobs.service';
-import {NewJob} from '../models';
+import {Job} from '../models';
 
 @Component({
   selector: 'app-scoreboard',
@@ -14,14 +14,14 @@ import {NewJob} from '../models';
 })
 export class ScoreboardPage {
 
-  jobs: NewJob[] = [];
+  jobs: Job[] = [];
 
   constructor(public modalController: ModalController,
               private jobsService: JobsService) {
     const today = moment();
-    this.jobsService.getAll().pipe(
-      map(jobs => jobs.filter(job => today.isSameOrBefore(job.startDate.toDate())))
-    ).subscribe((jobs: NewJob[]) => this.jobs = jobs);
+    this.jobsService.getAll()
+        // .pipe( map(jobs => jobs.filter(job => today.isSameOrBefore(job.startDate.toDate()))))
+        .subscribe((jobs: Job[]) => this.jobs = jobs);
   }
 
   async presentModal() {

@@ -21,10 +21,11 @@ export class NewJobModalComponent implements OnInit {
               private modalCtrl: ModalController
   ) {
     this.newJobForm = this.fb.group({
-      category: [''],
-      description: [''],
-      dueDate: [],
-      coordinates: [],
+      category: ['', Validators.compose([Validators.required])],
+      description: ['', Validators.compose([Validators.required])],
+      startDate: [Validators.compose([Validators.required])],
+      dueDate: [Validators.compose([Validators.required])],
+      coordinates: [Validators.compose([Validators.required])],
     });
   }
 
