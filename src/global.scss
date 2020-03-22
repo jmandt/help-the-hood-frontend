@@ -39,6 +39,10 @@ h5 {
   @include font-bold;
 }
 
+ion-content {
+  --background: url('./assets/background_urban_map.png');
+}
+
 .details-modal .modal-wrapper {
   height:50%;
   width: 90%;

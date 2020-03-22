@@ -39,3 +39,9 @@
     @include default-font;
   }
 }
+
+@mixin default-modal {
+  ion-content {
+    --background: white;
+  }
+}
