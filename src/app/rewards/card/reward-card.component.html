@@ -1,0 +1,12 @@
+<ion-card>
+  <ion-card-title>
+    {{reward.providerName}}
+  </ion-card-title>
+  <ion-card-content>
+    <div class="name">{{reward.name}}</div>
+    <div>{{reward.description}}</div>
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+      <ion-fab-button color="tertiary" size="small">{{reward.dollarCost}}$</ion-fab-button>
+    </ion-fab>
+  </ion-card-content>
+</ion-card>

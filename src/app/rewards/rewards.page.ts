@@ -1,8 +1,9 @@
 import { Component, OnDestroy } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/firestore';
 import { Select } from '@ngxs/store';
 import { Observable, Subscription } from 'rxjs';
 
-import { User } from 'src/app/models';
+import { User, Reward } from 'src/app/models';
 import { UserState } from 'src/app/store';
 
 @Component({
@@ -15,13 +16,20 @@ export class RewardsPage implements OnDestroy {
   @Select(UserState) user$: Observable<User>;
 
   public user: User;
+  public rewards: Reward[] = [];
 
   private subscriptions: Subscription[] = [];
 
-  constructor() {
+  constructor(
+    db: AngularFirestore
+  ) {
     this.subscriptions.push(
       this.user$.subscribe(user => {
         this.user = user;
+      }),
+
+      db.collection<Reward>('reward').valueChanges().subscribe(rewards => {
+        this.rewards = rewards;
       })
     )
   }

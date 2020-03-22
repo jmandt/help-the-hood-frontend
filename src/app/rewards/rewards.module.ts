@@ -7,6 +7,7 @@ import {canActivate, redirectUnauthorizedTo} from '@angular/fire/auth-guard';
 
 import { SharedComponentModule } from 'src/app/shared';
 import { RewardsPage } from './rewards.page';
+import { RewardCardComponent } from './card';
 
 @NgModule({
   imports: [
@@ -16,6 +17,9 @@ import { RewardsPage } from './rewards.page';
     RouterModule.forChild([{ path: '', component: RewardsPage, ...canActivate(redirectUnauthorizedTo(['/auth/login']))}]),
     SharedComponentModule
   ],
-  declarations: [RewardsPage]
+  declarations: [
+    RewardsPage,
+    RewardCardComponent
+  ]
 })
 export class RewardsModule {}

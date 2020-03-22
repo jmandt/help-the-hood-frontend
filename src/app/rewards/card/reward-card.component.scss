@@ -1,0 +1,23 @@
+@import '../../../theme/mixins.scss';
+
+:host {
+  ion-card-title {
+    @include default-font;
+    @include font-bold;
+
+    padding: 12px;
+    background-color: var(--ion-color-primary-contrast);
+  }
+
+  ion-card-content {
+    padding: 12px;
+
+    .name {
+      @include font-bold;
+    }
+
+    ion-fab-button {
+      margin: 0px;
+    }
+  }
+}
