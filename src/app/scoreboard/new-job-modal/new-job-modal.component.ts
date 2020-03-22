@@ -20,7 +20,7 @@ export class NewJobModalComponent implements OnInit {
 
     constructor(private fb: FormBuilder,
                 private jobsService: JobsService,
-                private modalCtrl: ModalController
+                public modalCtrl: ModalController
     ) {
         this.newJobForm = this.fb.group({
             category: ['', Validators.compose([Validators.required])],
