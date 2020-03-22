@@ -23,9 +23,9 @@ export class NewJobModalComponent implements OnInit {
     this.newJobForm = this.fb.group({
       category: ['', Validators.compose([Validators.required])],
       description: ['', Validators.compose([Validators.required])],
-      startDate: [Validators.compose([Validators.required])],
-      dueDate: [Validators.compose([Validators.required])],
-      coordinates: [Validators.compose([Validators.required])],
+      // startDate: [new Date().toDateString(), Validators.compose([Validators.required])],
+      dueDate: [new Date().toDateString(), Validators.compose([Validators.required])],
+      coordinates: [],
     });
   }
 
@@ -37,6 +37,8 @@ export class NewJobModalComponent implements OnInit {
   }
 
   publishJob() {
+    console.log(this.newJobForm.value)
+
     this.jobsService.storeNewJob(this.newJobForm.value);
     this.modalCtrl.dismiss();
   }
