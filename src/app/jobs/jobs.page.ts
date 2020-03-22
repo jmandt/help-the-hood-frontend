@@ -6,11 +6,11 @@ import {Observable} from 'rxjs';
 import {User} from '../models';
 
 @Component({
-    selector: 'app-tab2',
-    templateUrl: 'tab2.page.html',
-    styleUrls: ['tab2.page.scss']
+    selector: 'app-jobs',
+    templateUrl: 'jobs.page.html',
+    styleUrls: ['jobs.page.scss']
 })
-export class Tab2Page {
+export class JobsPage {
 
     jobsTaken;
     jobsPosted;
