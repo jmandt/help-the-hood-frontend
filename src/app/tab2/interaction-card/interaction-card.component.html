@@ -1,4 +1,4 @@
-<!--<ion-card *ngIf="action==='help'">
+<ion-card *ngIf="action==='help'">
 
     <div class="do-for-who">
         {{selectedCategory.displayName}} für {{jobTaken.name}}
@@ -7,7 +7,7 @@
         <div *ngIf="jobTaken.status == 'committed'">
             <ion-row>
                 <ion-col size="3">
-                    <ion-icon class="icon" name="help-outline"></ion-icon>
+                    <ion-icon name="help-outline"></ion-icon>
                 </ion-col>
                 <ion-col>
                     {{jobTaken.name}} hat deine Hilfe noch nicht bestätigt
@@ -17,7 +17,7 @@
         <div *ngIf="jobTaken.status == 'inProgress'">
             <ion-row>
                 <ion-col size="3">
-                    <ion-icon class="icon" name="checkmark-outline"></ion-icon>
+                    <ion-icon name="checkmark-outline"></ion-icon>
                 </ion-col>
                 <ion-col>
                     {{jobTaken.name}} nimmt deine Hilfe an
@@ -27,7 +27,7 @@
         <div *ngIf="jobTaken.status == 'done'">
             <ion-row>
                 <ion-col size="3">
-                    <ion-icon class="icon ion-color-success" name="checkmark-outline"></ion-icon>
+                    <ion-icon class="ion-color-success" name="checkmark-outline"></ion-icon>
                 </ion-col>
                 <ion-col>
                     Danke, dass du {{jobTaken.name}} unterstützt hast
@@ -35,7 +35,7 @@
             </ion-row>
         </div>
     </ion-card-content>
-</ion-card>-->
+</ion-card>
 
 <ion-card *ngIf="action==='inNeed'">
     <div *ngIf="jobTaken.status == 'new'">
