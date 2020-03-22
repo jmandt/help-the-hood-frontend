@@ -9,7 +9,7 @@
 
 @mixin default-font {
   color: #3e3b3b;
-  font-size: 14px;
+  font-size: 15px;
 }
 
 @mixin font-bold {
@@ -17,7 +17,7 @@
 }
 
 @mixin font-accent {
-  @include font-bold;
+  font-weight: 900;
   color: var(--ion-color-primary-contrast);
 }
 
