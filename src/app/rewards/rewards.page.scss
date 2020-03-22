@@ -3,6 +3,7 @@
 :host {
   .dollars-card {
     @include card-with-icon;
+    margin-bottom: 0px;
 
     ion-card-content {
       margin-top: auto;

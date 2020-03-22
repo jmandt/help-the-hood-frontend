@@ -25,12 +25,18 @@
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
 
+@import './theme/mixins.scss';
+
 .toolbar-background {
   background-color: var(--ion-color-primary);
 }
 
 body {
   font-family: 'Roboto', sans-serif;
+}
+
+h5 {
+  @include font-bold;
 }
 
 .details-modal .modal-wrapper {

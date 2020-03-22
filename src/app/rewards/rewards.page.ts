@@ -1,5 +1,4 @@
 import { Component, OnDestroy } from '@angular/core';
-import {AuthService} from '../services/auth';
 import { Select } from '@ngxs/store';
 import { Observable, Subscription } from 'rxjs';
 
