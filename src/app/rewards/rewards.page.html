@@ -18,4 +18,5 @@
     <h5>Aktuelle Rabatte in deiner Hood</h5>
   </div>
   <app-reward-card *ngFor="let reward of rewards" [reward]="reward"></app-reward-card>
+  <div *ngIf="rewards.length === 0" class="ion-padding-horizontal no-rewards">Keine Rabatte verfügbar</div>
 </ion-content>
