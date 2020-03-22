@@ -8,6 +8,8 @@ export interface NewJob {
     endDate?: firebase.firestore.Timestamp;
     description: string;
     location: Location;
+    uid: string;
+    status: string;
 }
 
 export interface Location {

@@ -14,6 +14,7 @@ import {JobDetailsComponent} from '../job-details/job-details.component';
 export class JobCardComponent implements OnInit {
 
   @Input() id: string;
+  @Input() jobUid: string;
 
   job: NewJob;
   categories: Category [] = Categories;
@@ -24,11 +25,10 @@ export class JobCardComponent implements OnInit {
 
 
   ngOnInit() {
-    this.jobService.getJobById(this.id).subscribe((job: NewJob) => {
-      console.log(job);
-      this.job = job;
-      this.selectedCategory = this.categories.find(item => item.value === job.category);
-      this.newJob = ('status' in job) ? false : true;
+    this.jobService.getJobById(this.jobUid, this.id).subscribe((job: NewJob []) => {
+      this.job = job[0];
+      this.selectedCategory = this.categories.find(item => item.value === this.job.category);
+      this.newJob = (job.status !== 'new') ? false : true;
     });
   }
 
@@ -36,13 +36,13 @@ export class JobCardComponent implements OnInit {
     const modal = await this.modalController.create({
       component: JobDetailsComponent,
       cssClass: 'details-modal',
-      componentProps: {id}
+      componentProps: {id: this.id, jobUid: this.jobUid}
     });
     return await modal.present();
   }
 
   help() {
-    this.jobService.updateStatus(this.id)
+    this.jobService.updateStatus(this.job.uid, this.id)
     event.stopPropagation();
   }
 

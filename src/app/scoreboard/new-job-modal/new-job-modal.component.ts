@@ -21,7 +21,6 @@ export class NewJobModalComponent implements OnInit {
               private modalCtrl: ModalController
   ) {
     this.newJobForm = this.fb.group({
-      name: ['',  Validators.compose([Validators.minLength(5), Validators.required])],
       category: [''],
       description: [''],
       dueDate: [],
@@ -37,7 +36,6 @@ export class NewJobModalComponent implements OnInit {
   }
 
   publishJob() {
-    console.log(this.newJobForm.value)
     this.jobsService.storeNewJob(this.newJobForm.value);
     this.modalCtrl.dismiss();
   }
