@@ -16,6 +16,7 @@ export interface Location {
     city: string;
     postalCode: number;
     coordinates: Coordinates;
+    address: string;
 }
 
 export interface Coordinates {

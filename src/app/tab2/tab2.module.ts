@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { Tab2Page } from './tab2.page';
 import {canActivate, redirectUnauthorizedTo} from '@angular/fire/auth-guard';
 import {InteractionCardComponent} from './interaction-card/interaction-card.component';
+import {SharedComponentModule} from '../shared';
 
 const routes: Routes = [
   {
@@ -16,12 +17,13 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [
-    IonicModule,
-    CommonModule,
-    FormsModule,
-    RouterModule.forChild(routes)
-  ],
+    imports: [
+        IonicModule,
+        CommonModule,
+        FormsModule,
+        RouterModule.forChild(routes),
+        SharedComponentModule
+    ],
   declarations: [Tab2Page, InteractionCardComponent]
 })
 export class Tab2PageModule {}

@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {ModalController} from '@ionic/angular';
+import {AlertController, ModalController} from '@ionic/angular';
 import * as moment from 'moment';
 
 import {Categories, Category, Job, User} from 'src/app/models';
@@ -31,7 +31,8 @@ export class JobCardComponent implements OnInit {
 
     constructor(private jobService: JobsService,
                 public modalController: ModalController,
-                private router: Router) {
+                private router: Router,
+                public alertController: AlertController) {
         this.user$.subscribe(user => this.user = user);
     }
 
@@ -56,11 +57,30 @@ export class JobCardComponent implements OnInit {
     help() {
         event.stopPropagation();
         if (this.user) {
-            this.jobService.commitToJob(this.job.uid, this.id, this.job);
+            this.presentHelpConfirmationAlert();
         } else {
             this.router.navigateByUrl('/auth/login');
         }
 
+    }
+
+    async presentHelpConfirmationAlert() {
+        const alert = await this.alertController.create({
+            header: `Beim ${this.selectedCategory.displayName} helfen?`,
+            message: 'Bitte bestätige, dass du hier unterstützen kannst',
+            buttons: [{
+                text: 'Abbrechen',
+                role: 'cancel',
+                cssClass: 'secondary',
+            }, {
+                text: 'Ja, helfen!',
+                handler: () => {
+                    this.jobService.commitToJob(this.job.uid, this.id, this.job);
+                }
+            }]
+        });
+
+        await alert.present();
     }
 
     printDate() {

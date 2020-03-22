@@ -1,18 +1,7 @@
-.header {
-  font-weight: bold;
-  font-size: large;
-}
-
-.bold {
-  font-weight: bold;
-}
-
-.inline-flex {
-  display: inline-flex;
-}
+@import '../../../theme/mixins.scss';
 
 .help {
-  padding-top: 9%;
+  padding-top: 6%;
   font-size: large;
   font-weight: bold;
   background-color: var(--ion-color-secondary);
@@ -21,4 +10,31 @@
   bottom: 0;
   position: absolute;
   width: 100%;
+}
+
+.icon-container {
+  display: inline-flex;
+
+  app-category-icon {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.main-container {
+  display: inline-flex;
+
+  .description {
+    margin-top: auto;
+    margin-bottom: auto;
+
+    ion-card-content {
+      @include default-font;
+      padding: 0;
+
+      .category {
+        @include font-bold;
+      }
+    }
+  }
 }

@@ -18,7 +18,11 @@ export class InteractionCardComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.selectedCategory = this.categories.find(item => item.value === this.jobTaken.category)
+        this.selectedCategory = this.categories.find(item => item.value === this.jobTaken.category);
+        // tslint:disable-next-line:no-unused-expression
+        if (this.jobTaken.name.split(' ').length > 1) {
+            this.jobTaken.name = this.jobTaken.name.split(' ')[0];
+        }
     }
 
     acceptHelp() {

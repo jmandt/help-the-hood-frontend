@@ -1,19 +1,26 @@
 <div class="ion-padding">
-  <div class="inline-flex">
-    <app-category-icon [iconName]="selectedCategory.icon"></app-category-icon>
-    <div class="ion-margin-start">
-      <div class="header">{{selectedCategory.displayName}}</div>
-<!--      <div>{{job.dueDate}}</div>-->
-      <div *ngIf="job.location">{{job.location.postalCode}} {{job.location.city}} </div>
+    <ion-grid class="ion-no-padding">
+        <ion-row>
+            <ion-col size="3">
+                <app-category-icon [iconName]="selectedCategory.icon"></app-category-icon>
+            </ion-col>
+
+            <ion-col class="main-container" size="9">
+                <div class="description">
+                    <ion-card-content>
+                        <div class="category">{{selectedCategory.displayName}}</div>
+                        <div class="header">{{job.location.postalCode}} {{job.location.city}}</div>
+                    </ion-card-content>
+                </div>
+            </ion-col>
+
+        </ion-row>
+    </ion-grid>
+    <div class="ion-margin-top">
+        {{job.description}}
     </div>
-  </div>
-  <div>
-    Google Maps
-  </div>
-  <div>
-    {{job.description}}
-  </div>
 </div>
 <div class="help ion-text-center" (click)="help()">
-  Hilfe anbieten
+    Hilfe anbieten
 </div>
+
