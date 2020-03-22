@@ -1,13 +1,14 @@
 <ion-card *ngIf="action==='help'">
 
     <div class="do-for-who">
-        {{selectedCategory.displayName}} für {{jobTaken.name}}
+            {{selectedCategory.displayName}} für {{jobTaken.name}}
+        <ion-icon class="message-icon" slot="end" name="chatbox-outline"></ion-icon>
     </div>
     <ion-card-content>
         <div *ngIf="jobTaken.status == 'committed'">
             <ion-row>
                 <ion-col size="3">
-                    <ion-icon name="help-outline"></ion-icon>
+                    <app-circled-icon name="help-outline"></app-circled-icon>
                 </ion-col>
                 <ion-col>
                     {{jobTaken.name}} hat deine Hilfe noch nicht bestätigt
@@ -17,17 +18,17 @@
         <div *ngIf="jobTaken.status == 'inProgress'">
             <ion-row>
                 <ion-col size="3">
-                    <ion-icon name="checkmark-outline"></ion-icon>
+                    <app-circled-icon name="checkmark-outline"></app-circled-icon>
                 </ion-col>
                 <ion-col>
-                    {{jobTaken.name}} nimmt deine Hilfe an
+                    {{jobTaken.name}} nimmt deine Hilfe an. Leg los!
                 </ion-col>
             </ion-row>
         </div>
         <div *ngIf="jobTaken.status == 'done'">
             <ion-row>
-                <ion-col size="3">
-                    <ion-icon class="ion-color-success" name="checkmark-outline"></ion-icon>
+                <ion-col class="status-icon" size="3">
+                    <app-circled-icon name="checkmark-outline" inputClass="green"></app-circled-icon>
                 </ion-col>
                 <ion-col>
                     Danke, dass du {{jobTaken.name}} unterstützt hast
@@ -85,7 +86,7 @@
         <ion-card-content>
             <ion-row>
                 <ion-col size="3">
-                    <ion-icon class="icon green" name="checkmark-outline"></ion-icon>
+                    <app-circled-icon name="checkmark-outline" inputClass="green"></app-circled-icon>
                 </ion-col>
                 <ion-col>
                     {{jobTaken.committedBy.name}} hat {{selectedCategory.displayName}} für dich erledigt.

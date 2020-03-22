@@ -8,8 +8,8 @@
         <div class="description">
           <ion-card-content>
             <div class="category">{{selectedCategory.displayName}}</div>
-            <div>{{job.name}}</div>
-            <!-- <div>{{printDate()}}, {{printTime()}}</div>-->
+            <div class="header">{{job.location.postalCode}} {{job.location.city}}</div>
+
           </ion-card-content>
         </div>
         <ion-button *ngIf="newJob" color="secondary" class="button-right" (click)="help()" >Helfen</ion-button>
