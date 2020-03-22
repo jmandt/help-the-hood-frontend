@@ -4,8 +4,8 @@ export interface Job {
     id: string;
     name: string;
     category: string;
-    startDate: firebase.firestore.Timestamp;
-    endDate?: firebase.firestore.Timestamp;
+    startDate: string;
+    endDate?: string;
     description: string;
     location: Location;
     uid: string;

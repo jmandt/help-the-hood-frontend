@@ -56,7 +56,7 @@ export class JobCardComponent implements OnInit {
 
     help() {
         event.stopPropagation();
-        if (this.user) {
+        if (this.user.uid) {
             this.presentHelpConfirmationAlert();
         } else {
             this.router.navigateByUrl('/auth/login');
@@ -84,7 +84,7 @@ export class JobCardComponent implements OnInit {
     }
 
     printDate() {
-        const startDate = moment(this.job.startDate.toDate());
+        const startDate = moment(this.job.startDate);
         const today = moment();
         const tomorrow = moment().add(1, 'day');
         return today.isSame(startDate, 'days')
@@ -95,9 +95,9 @@ export class JobCardComponent implements OnInit {
     }
 
     printTime() {
-        const startDate = moment(this.job.startDate.toDate());
+        const startDate = moment(this.job.startDate);
         const endDate = this.job.endDate
-            ? moment(this.job.endDate.toDate())
+            ? moment(this.job.endDate)
             : undefined;
 
         return `${startDate.format('hh:mm')}${endDate ? `-${endDate.format('hh:mm')}` : ''}`;
