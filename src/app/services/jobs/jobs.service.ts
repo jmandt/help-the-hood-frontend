@@ -36,13 +36,14 @@ export class JobsService {
     }
 
     commitToJob(uid, id: string, job) {
-        console.log(job);
         const docID = this.db.createId();
         this.db.collection('user').doc(this.user.uid).collection('jobsTaken').doc(docID).set({
             takenTimestamp: new Date(), ...job,
-            takenId: docID
+            takenId: docID,
+            status: 'committed'
         });
-        return this.db.collection('user').doc(uid).collection('jobs').doc(id).update({status: 'committed', committedBy: this.user});
+        return this.db.collection('user').doc(uid)
+            .collection('jobs').doc(id).update({status: 'committed', committedBy: this.user, takenId: docID});
     }
 
     getAllCommittedJobsByUser() {

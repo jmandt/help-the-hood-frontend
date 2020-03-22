@@ -48,18 +48,19 @@ export class JobCardComponent implements OnInit {
         const modal = await this.modalController.create({
             component: JobDetailsComponent,
             cssClass: 'details-modal',
-            componentProps: {id: this.id, jobUid: this.jobUid}
+            componentProps: {id: this.id, jobUid: this.jobUid, currentUserId: this.user.uid}
         });
         return await modal.present();
     }
 
     help() {
+        event.stopPropagation();
         if (this.user) {
             this.jobService.commitToJob(this.job.uid, this.id, this.job);
-            event.stopPropagation();
         } else {
             this.router.navigateByUrl('/auth/login');
         }
+
     }
 
     printDate() {

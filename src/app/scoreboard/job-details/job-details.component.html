@@ -3,7 +3,7 @@
     <app-category-icon [iconName]="selectedCategory.icon"></app-category-icon>
     <div class="ion-margin-start">
       <div class="header">{{selectedCategory.displayName}}</div>
-      <div>{{job.dueDate}}</div>
+<!--      <div>{{job.dueDate}}</div>-->
       <div *ngIf="job.location">{{job.location.postalCode}} {{job.location.city}} </div>
     </div>
   </div>
@@ -14,6 +14,6 @@
     {{job.description}}
   </div>
 </div>
-<div class="help ion-text-center">
+<div class="help ion-text-center" (click)="help()">
   Hilfe anbieten
 </div>

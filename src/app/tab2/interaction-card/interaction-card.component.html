@@ -1,33 +1,46 @@
-<ion-card *ngIf="action==='help'">
-    <ion-card-header class="do-for-who">{{selectedCategory.displayName}} für {{jobTaken.name}}</ion-card-header>
+<!--<ion-card *ngIf="action==='help'">
+
+    <div class="do-for-who">
+        {{selectedCategory.displayName}} für {{jobTaken.name}}
+    </div>
     <ion-card-content>
-        <div *ngIf="jobTaken.status == 'inProgress'">
+        <div *ngIf="jobTaken.status == 'committed'">
             <ion-row>
                 <ion-col size="3">
-                    <ion-icon name="checkmark-outline"></ion-icon>
-                </ion-col>
-                <ion-col>
-                    {{jobTaken.name}} nimmt deine Hilfe an
-                </ion-col>
-            </ion-row>
-        </div>
-        <div *ngIf="jobTaken.status == 'commited'">
-            <ion-row>
-                <ion-col size="3">
-                    <ion-icon name="help-circle-outline"></ion-icon>
+                    <ion-icon class="icon" name="help-outline"></ion-icon>
                 </ion-col>
                 <ion-col>
                     {{jobTaken.name}} hat deine Hilfe noch nicht bestätigt
                 </ion-col>
             </ion-row>
         </div>
+        <div *ngIf="jobTaken.status == 'inProgress'">
+            <ion-row>
+                <ion-col size="3">
+                    <ion-icon class="icon" name="checkmark-outline"></ion-icon>
+                </ion-col>
+                <ion-col>
+                    {{jobTaken.name}} nimmt deine Hilfe an
+                </ion-col>
+            </ion-row>
+        </div>
+        <div *ngIf="jobTaken.status == 'done'">
+            <ion-row>
+                <ion-col size="3">
+                    <ion-icon class="icon ion-color-success" name="checkmark-outline"></ion-icon>
+                </ion-col>
+                <ion-col>
+                    Danke, dass du {{jobTaken.name}} unterstützt hast
+                </ion-col>
+            </ion-row>
+        </div>
     </ion-card-content>
-    <div></div>
-</ion-card>
+</ion-card>-->
 
 <ion-card *ngIf="action==='inNeed'">
     <div *ngIf="jobTaken.status == 'new'">
-        <ion-card-content>
+        <div class="do-for-who">Du suchst jemanden zum {{selectedCategory.displayName}}</div>
+        <ion-card-content class="content">
             <ion-row>
                 <ion-col>
                     Deine Anfrage wurde gestellt.
@@ -36,9 +49,9 @@
         </ion-card-content>
     </div>
     <div *ngIf="jobTaken.status == 'committed'">
-        <ion-card-header class="do-for-who">{{jobTaken.committedBy.name}}
-            möchte {{selectedCategory.displayName}}</ion-card-header>
-        <ion-card-content>
+        <div class="do-for-who">{{jobTaken.committedBy.name}}
+            möchte {{selectedCategory.displayName}}</div>
+        <ion-card-content >
             <ion-row>
                 <ion-col>
                     <ion-button (click)="acceptHelp()">
@@ -56,11 +69,9 @@
         </ion-card-content>
     </div>
     <div *ngIf="jobTaken.status == 'inProgress'">
-        <ion-card-header class="do-for-who">{{jobTaken.committedBy.name}}
-            möchte {{selectedCategory.displayName}}</ion-card-header>
+        <div class="do-for-who">{{jobTaken.committedBy.name}}
+            möchte {{selectedCategory.displayName}}</div>
         <ion-card-content>
-
-
             <ion-row>
                 {{jobTaken.committedBy.name}} führt den Job jetzt für dich aus :)
             </ion-row>
@@ -70,8 +81,12 @@
         </ion-card-content>
     </div>
     <div *ngIf="jobTaken.status == 'done'">
+        <div class="do-for-who">Du hast hilfe erhalten</div>
         <ion-card-content>
             <ion-row>
+                <ion-col size="3">
+                    <ion-icon class="icon green" name="checkmark-outline"></ion-icon>
+                </ion-col>
                 <ion-col>
                     {{jobTaken.committedBy.name}} hat {{selectedCategory.displayName}} für dich erledigt.
                 </ion-col>
