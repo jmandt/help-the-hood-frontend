@@ -38,7 +38,10 @@ export class JobsService {
     commitToJob(uid, id: string, job) {
         console.log(job);
         const docID = this.db.createId();
-        this.db.collection('user').doc(this.user.uid).collection('jobsTaken').doc(docID).set({takenTimestamp: new Date(), ...job});
+        this.db.collection('user').doc(this.user.uid).collection('jobsTaken').doc(docID).set({
+            takenTimestamp: new Date(), ...job,
+            takenId: docID
+        });
         return this.db.collection('user').doc(uid).collection('jobs').doc(id).update({status: 'committed', committedBy: this.user});
     }
 
@@ -50,16 +53,30 @@ export class JobsService {
         return this.db.collection('user').doc(this.user.uid).collection('/jobs').valueChanges();
     }
 
-    acceptHelp(jobId) {
-        console.log(this.user.uid, jobId);
+    acceptHelp(jobId, committedUserId, takenId) {
         this.db.collection('user').doc(this.user.uid)
             .collection('jobs').doc(jobId)
-            .update({status: 'inProgress'});
+            .update({status: 'inProgress', inProgressChangeTime: new Date()});
+
+        this.db.collection('user').doc(committedUserId)
+            .collection('jobsTaken').doc(takenId)
+            .update({status: 'inProgress', inProgressChangeTime: new Date()});
     }
 
     denyHelp(jobId) {
         this.db.collection('user').doc(this.user.uid)
             .collection('jobs').doc(jobId)
-            .update({committedBy: {}, status: 'new'});
+            .update({committedBy: {}, status: 'new', declinedChangeTime: new Date()});
     }
+
+    markAsDone(jobId, committedUserId, takenId) {
+        this.db.collection('user').doc(this.user.uid)
+            .collection('jobs').doc(jobId)
+            .update({status: 'done', doneChangeTime: new Date()});
+
+        this.db.collection('user').doc(committedUserId)
+            .collection('jobsTaken').doc(takenId)
+            .update({status: 'done', doneChangeTime: new Date()});
+    }
+
 }

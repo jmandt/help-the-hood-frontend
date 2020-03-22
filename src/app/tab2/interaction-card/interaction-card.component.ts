@@ -22,11 +22,14 @@ export class InteractionCardComponent implements OnInit {
     }
 
     acceptHelp() {
-        this.jobService.acceptHelp(this.jobTaken.id);
+        this.jobService.acceptHelp(this.jobTaken.id, this.jobTaken.committedBy.uid, this.jobTaken.takenId);
     }
 
     denyHelp() {
         this.jobService.denyHelp(this.jobTaken.id);
+    }
 
+    markAsDone() {
+        this.jobService.markAsDone(this.jobTaken.id, this.jobTaken.committedBy.uid, this.jobTaken.takenId);
     }
 }

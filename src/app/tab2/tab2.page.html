@@ -1,10 +1,19 @@
 <ion-content [fullscreen]="true">
 
-<ion-toolbar>Ausstehend</ion-toolbar>
+    <ion-toolbar>Ausstehend</ion-toolbar>
     <app-interaction-card *ngFor="let job of jobsTaken" [jobTaken]="job" action="help"></app-interaction-card>
+
+    <div *ngIf="jobsDoneByMe.length > 0">
+        Erledigt
+    </div>
+    <app-interaction-card *ngFor="let job of jobsDoneByMe" [jobTaken]="job" action="help"></app-interaction-card>
 
     <ion-toolbar>Von mir angefragt</ion-toolbar>
 
     <app-interaction-card *ngFor="let job of jobsPosted" [jobTaken]="job" action="inNeed"></app-interaction-card>
 
+    <div *ngIf="jobsDoneForMe.length > 0">
+        Erledigt
+    </div>
+    <app-interaction-card *ngFor="let job of jobsDoneForMe" [jobTaken]="job" action="inNeed"></app-interaction-card>
 </ion-content>

@@ -14,6 +14,8 @@ export class Tab2Page {
 
     jobsTaken;
     jobsPosted;
+    jobsDoneByMe = [];
+    jobsDoneForMe  = [];
 
     @Select(UserState) user$: Observable<User>;
 
@@ -24,11 +26,13 @@ export class Tab2Page {
 
     init() {
         this.jobService.getAllCommittedJobsByUser().subscribe(jobs => {
-            this.jobsTaken = jobs;
+            this.jobsTaken = jobs.filter(job => job.status === 'committed' || job.status === 'inProgress');
+            this.jobsDoneByMe = jobs.filter(job => job.status === 'done');
         });
 
         this.jobService.getAllPostedJobsByUser().subscribe(jobs => {
-            this.jobsPosted = jobs;
+            this.jobsPosted = jobs.filter(job => job.status !== 'done');
+            this.jobsDoneForMe = jobs.filter(job => job.status === 'done');
         });
     }
 
