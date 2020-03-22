@@ -19,13 +19,13 @@ export class JobsPage {
 
     @Select(UserState) user$: Observable<User>;
 
-
     constructor(private jobService: JobsService) {
         this.user$.subscribe(user => user.uid ? this.init() : undefined);
     }
 
     init() {
         this.jobService.getAllCommittedJobsByUser().subscribe(jobs => {
+          console.log(jobs);
             this.jobsTaken = jobs.filter(job => job.status === 'committed' || job.status === 'inProgress');
             this.jobsDoneByMe = jobs.filter(job => job.status === 'done');
         });

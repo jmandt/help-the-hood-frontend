@@ -25,6 +25,7 @@ export class NewJobModalComponent implements OnInit {
         this.newJobForm = this.fb.group({
             category: ['', Validators.compose([Validators.required])],
             description: ['', Validators.compose([Validators.required])],
+            phone: ['', Validators.compose([Validators.required])],
             startDate: [new Date().toDateString(), Validators.compose([Validators.required])],
             endDate: [new Date().toDateString(), Validators.compose([Validators.required])],
             location: [{}, Validators.compose([Validators.required])],
