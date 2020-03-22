@@ -16,6 +16,7 @@ export class JobsPage {
     jobsPosted;
     jobsDoneByMe = [];
     jobsDoneForMe  = [];
+    selectedSegment = 'helping';
 
     @Select(UserState) user$: Observable<User>;
 
@@ -34,6 +35,10 @@ export class JobsPage {
             this.jobsPosted = jobs.filter(job => job.status !== 'done');
             this.jobsDoneForMe = jobs.filter(job => job.status === 'done');
         });
+    }
+
+    segmentChanged(event) {
+        this.selectedSegment = event.detail.value;
     }
 
 }

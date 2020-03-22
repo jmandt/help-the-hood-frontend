@@ -1,20 +1,39 @@
 <ion-content [fullscreen]="true">
 
-    <h5 class="ion-padding-horizontal">Ausstehend</h5>
-    <app-interaction-card *ngFor="let job of jobsTaken" [jobTaken]="job" action="help"></app-interaction-card>
+    <ion-segment value="helping" (ionChange)="segmentChanged($event)">
+        <ion-segment-button value="helping">
+            <ion-label>Hilfe leisten</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="needHelp">
+            <ion-label>Hilfe anfordern</ion-label>
+        </ion-segment-button>
+    </ion-segment>
 
-    <div *ngIf="jobsDoneByMe.length > 0">
-        <ion-toolbar>Erledigt</ion-toolbar>
+    <div *ngIf="selectedSegment==='helping'">
+        <div *ngIf="jobsTaken.length > 0">
+            <ion-toolbar>Ausstehend</ion-toolbar>
+            <app-interaction-card *ngFor="let job of jobsTaken" [jobTaken]="job" action="help"></app-interaction-card>
+        </div>
+
+
+        <div *ngIf="jobsDoneByMe.length > 0">
+            <ion-toolbar>Erledigt</ion-toolbar>
+        </div>
+        <app-interaction-card *ngFor="let job of jobsDoneByMe" [jobTaken]="job" action="help"></app-interaction-card>
     </div>
-    <app-interaction-card *ngFor="let job of jobsDoneByMe" [jobTaken]="job" action="help"></app-interaction-card>
 
-    <h5 class="ion-padding-horizontal">Von mir angefragt</h5>
 
-    <app-interaction-card *ngFor="let job of jobsPosted" [jobTaken]="job" action="inNeed"></app-interaction-card>
+    <div *ngIf="selectedSegment==='needHelp'">
+        <div *ngIf="jobsPosted.length > 0">
 
-    <div *ngIf="jobsDoneForMe.length > 0">
-        <ion-toolbar>Erledigt</ion-toolbar>
-
+            <ion-toolbar>Ausstehend</ion-toolbar>
+            <app-interaction-card *ngFor="let job of jobsPosted" [jobTaken]="job"
+                                  action="inNeed"></app-interaction-card>
+        </div>
+        <div *ngIf="jobsDoneForMe.length > 0">
+            <ion-toolbar>Erledigt</ion-toolbar>
+            <app-interaction-card *ngFor="let job of jobsDoneForMe" [jobTaken]="job"
+                                  action="inNeed"></app-interaction-card>
+        </div>
     </div>
-    <app-interaction-card *ngFor="let job of jobsDoneForMe" [jobTaken]="job" action="inNeed"></app-interaction-card>
 </ion-content>
