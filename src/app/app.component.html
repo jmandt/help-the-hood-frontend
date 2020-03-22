@@ -2,11 +2,11 @@
   <ion-header>
     <ion-toolbar color="primary">
       <ion-buttons slot="end">
-        <ion-button routerDirection="forward" routerLink="/user">
+        <ion-button *ngIf="userIsAuthenticated" routerDirection="forward" routerLink="/user">
           <ion-icon style="font-size: 2rem" name="person-circle-outline"></ion-icon>
         </ion-button>
       </ion-buttons>
-      <ion-title class="ion-text-start">
+      <ion-title class="ion-text-start" routerLink="/tabs/scoreboard">
         Help<br> the hood.
       </ion-title>
     </ion-toolbar>

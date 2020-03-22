@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {AuthService, CoreService} from '../../services';
 
 @Component({
   selector: 'app-pw-forgot',
@@ -8,5 +6,9 @@ import {AuthService, CoreService} from '../../services';
   styleUrls: ['./../auth.component.scss'],
 })
 export class PwForgotPage {
+
+  email: string | undefined;
+
+  constructor(){}
 
 }

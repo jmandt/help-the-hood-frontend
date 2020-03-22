@@ -1,13 +1,13 @@
-<ion-card *ngIf="action==='help'">
+<ion-card *ngIf="action==='help'" class="ion-no-margin">
 
     <div class="do-for-who">
             {{selectedCategory.displayName}} für {{jobTaken.name}}
         <ion-icon class="message-icon" slot="end" name="chatbox-outline"></ion-icon>
     </div>
-    <ion-card-content>
+    <ion-card-content class="ion-no-padding">
         <div *ngIf="jobTaken.status == 'committed'">
-            <ion-row>
-                <ion-col size="3">
+            <ion-row class="ion-no-margin">
+                <ion-col size="3" class="ion-text-center">
                     <app-circled-icon name="help-outline"></app-circled-icon>
                 </ion-col>
                 <ion-col>

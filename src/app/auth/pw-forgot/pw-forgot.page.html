@@ -6,21 +6,23 @@
     </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-margin ion-padding">
-    <div>
-        Bitte trag deine E-Mail-Adresse ein. Wir senden dir eine E-Mail zu um dein Passwort zurückzusetzen.
-    </div>
+<ion-content class="ion-margin">
+    <ion-card>
+        <div class="yellow-card-header">Passwort zurücksetzen</div>
+        <ion-card-content class="ion-padding">
+            <div>
+                Bitte trag deine E-Mail-Adresse ein. Wir senden dir eine E-Mail zu um dein Passwort zurückzusetzen.
+            </div>
 
-    <form [formGroup]="forgotPasswordForm" autocomplete="off">
 
-        <ion-item class="ion-margin-top ion-no-padding">
-            <ion-label position="stacked">E-Mail-Adresse</ion-label>
-            <ion-input type="email" formControlName="email">
-            </ion-input>
-        </ion-item>
+            <ion-item class="ion-margin-top ion-no-padding">
+                <ion-label position="stacked">E-Mail-Adresse</ion-label>
+                <ion-input type="email" [(ngModel)]="email">
+                </ion-input>
+            </ion-item>
 
-    </form>
 
-    <app-password-reset-button></app-password-reset-button>
-
+            <app-password-reset-button [email]="email"></app-password-reset-button>
+        </ion-card-content>
+    </ion-card>
 </ion-content>
