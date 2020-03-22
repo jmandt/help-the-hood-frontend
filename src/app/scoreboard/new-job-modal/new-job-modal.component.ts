@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {JobsService} from '../../services/jobs/jobs.service';
 import {ModalController} from '@ionic/angular';
+import * as moment from 'moment';
+
+import {JobsService} from '../../services/jobs/jobs.service';
 import {Categories, Category} from '../../models';
 
 @Component({
@@ -11,10 +13,10 @@ import {Categories, Category} from '../../models';
 })
 export class NewJobModalComponent implements OnInit {
 
+  readonly now = moment().utcOffset(1).toISOString();
   showErrorMessage = false;
   newJobForm: FormGroup;
   categories: Category [] = Categories;
-
 
   constructor(private fb: FormBuilder,
               private jobsService: JobsService,
@@ -23,8 +25,8 @@ export class NewJobModalComponent implements OnInit {
     this.newJobForm = this.fb.group({
       category: ['', Validators.compose([Validators.required])],
       description: ['', Validators.compose([Validators.required])],
-      // startDate: [new Date().toDateString(), Validators.compose([Validators.required])],
-      dueDate: [new Date().toDateString(), Validators.compose([Validators.required])],
+      startDate: [new Date().toDateString(), Validators.compose([Validators.required])],
+      endDate: [new Date().toDateString(), Validators.compose([Validators.required])],
       coordinates: [],
     });
   }
