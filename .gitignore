@@ -34,4 +34,4 @@ npm-debug.log*
 .firebase
 /firebase
 
-/environments
+src/environments/
