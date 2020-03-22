@@ -14,21 +14,21 @@
   <form [formGroup]="newJobForm" autocomplete="off">
 
     <ion-item>
-      <ion-label>Kategorie</ion-label>
+      <ion-label position="stacked">Kategorie</ion-label>
       <ion-select formControlName="category" value="shopping" okText="Okay" cancelText="Dismiss">
         <ion-select-option *ngFor="let item of categories" [value]="item.value">{{item.displayName}}</ion-select-option>
       </ion-select>
     </ion-item>
     <ion-item>
-      <ion-label position="floating">Beschreibung</ion-label>
+      <ion-label position="stacked">Beschreibung</ion-label>
       <ion-textarea formControlName="description"></ion-textarea>
     </ion-item>
     <ion-item>
-      <ion-label position="fixed">Wann?</ion-label>
+      <ion-label position="stacked">Wann?</ion-label>
       <ion-datetime displayFormat="D MMM YYYY H:mm" [min]="now" formControlName="startDate"></ion-datetime>
     </ion-item>
     <ion-item>
-      <ion-label position="fixed">Bis wann? (optional)</ion-label>
+      <ion-label position="stacked">Bis wann? (optional)</ion-label>
       <ion-datetime displayFormat="D MMM YYYY H:mm" [min]="now" formControlName="endDate"></ion-datetime>
     </ion-item>
 
