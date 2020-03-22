@@ -18,7 +18,7 @@ export class InteractionCardComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.selectedCategory = this.categories.find(item => item.value === this.jobTaken.category);
+        this.selectedCategory = this.categories.find(item => item.value === this.jobTaken.category)
     }
 
     acceptHelp() {

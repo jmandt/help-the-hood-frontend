@@ -37,8 +37,6 @@ export class NewJobModalComponent implements OnInit {
   }
 
   publishJob() {
-    console.log(this.newJobForm.value)
-
     this.jobsService.storeNewJob(this.newJobForm.value);
     this.modalCtrl.dismiss();
   }
