@@ -7,4 +7,5 @@ export interface User {
   profileImageUrl: string;
   uid: string;
   postalCode: number;
+  hoodDollars: number;
 }

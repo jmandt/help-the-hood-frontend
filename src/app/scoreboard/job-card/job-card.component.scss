@@ -1,18 +1,9 @@
 @import '../../../theme/mixins.scss';
 
 :host {
-  .icon-container {
-    display: inline-flex;
-
-    app-category-icon {
-      margin-left: auto;
-      margin-right: auto;
-    }
-  }
+  @include card-with-icon;
 
   .main-container {
-    display: inline-flex;
-
     .description {
       margin-top: auto;
       margin-bottom: auto;

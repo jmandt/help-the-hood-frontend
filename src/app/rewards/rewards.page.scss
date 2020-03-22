@@ -1,3 +1,18 @@
-ion-content ion-toolbar {
-  --background: translucent;
+@import '../../theme/mixins.scss';
+
+:host {
+  .dollars-card {
+    @include card-with-icon;
+
+    ion-card-content {
+      margin-top: auto;
+      margin-bottom: auto;
+      @include font-bold;
+      padding: 0;
+
+      .number {
+        @include font-accent;
+      }
+    }
+  }
 }
