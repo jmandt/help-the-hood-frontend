@@ -5,6 +5,8 @@ import {auth} from 'firebase/app';
 import {CoreService} from './../core/core.service';
 import {Router} from '@angular/router';
 import {AngularFirestore, AngularFirestoreDocument} from '@angular/fire/firestore';
+import {UserAction} from '../../store/actions';
+import {Store} from '@ngxs/store';
 
 @Injectable()
 export class AuthService {
@@ -13,8 +15,10 @@ export class AuthService {
         public afAuth: AngularFireAuth,
         public coreService: CoreService,
         public router: Router,
-        public afs: AngularFirestore
-    ) {
+        public afs: AngularFirestore,
+        private store: Store,
+
+) {
     }
 
     doRegister(value) {
@@ -56,6 +60,7 @@ export class AuthService {
         return new Promise((resolve, reject) => {
             if (firebase.auth().currentUser) {
                 this.afAuth.auth.signOut();
+                this.store.dispatch(new UserAction.Set(undefined));
                 resolve();
             } else {
                 reject();

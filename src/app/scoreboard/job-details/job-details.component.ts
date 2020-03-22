@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {JobsService} from '../../services/jobs';
-import {Categories, Category, NewJob} from '../../models';
+import {Categories, Category, Job} from '../../models';
 
 @Component({
   selector: 'app-job-details',
@@ -12,7 +12,7 @@ export class JobDetailsComponent implements OnInit {
   @Input() jobUid: string;
 
 
-  job: NewJob;
+  job: Job;
   categories: Category [] = Categories;
   selectedCategory: Category;
 
@@ -21,7 +21,7 @@ export class JobDetailsComponent implements OnInit {
 
 
   ngOnInit() {
-    this.jobService.getJobById(this.jobUid, this.id).subscribe((job: NewJob []) => {
+    this.jobService.getJobById(this.jobUid, this.id).subscribe((job: Job []) => {
       this.job = job[0];
       this.selectedCategory = this.categories.find(item => item.value === this.job.category);
     });

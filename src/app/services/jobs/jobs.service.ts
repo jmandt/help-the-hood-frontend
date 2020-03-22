@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {AngularFirestore} from '@angular/fire/firestore';
 import {Select, Store} from '@ngxs/store';
 
-import { NewJob, User } from 'src/app/models';
+import {Job, User} from 'src/app/models';
 import {UserState} from 'src/app/store/state';
 import {Observable} from 'rxjs';
 
@@ -20,14 +20,14 @@ export class JobsService {
     }
 
 
-    storeNewJob(newJob: NewJob) {
+    storeNewJob(newJob: Job) {
         const id = this.db.createId();
         const insert = ({id, creationTime: new Date(), name: this.user.name, uid: this.user.uid, status: 'new', ...newJob});
         return this.db.collection('user').doc(this.user.uid).collection('/jobs').doc(id).set(insert);
     }
 
     getAll() {
-        return this.db.collectionGroup<NewJob>('jobs', ref =>
+        return this.db.collectionGroup<Job>('jobs', ref =>
             ref.where('status', '==', 'new').orderBy('creationTime', 'desc')).valueChanges();
     }
 
@@ -35,7 +35,31 @@ export class JobsService {
         return this.db.collection('user').doc(uid).collection('jobs', ref => ref.where('id', '==', id)).valueChanges();
     }
 
-    updateStatus(uid, id: string) {
-        return this.db.collection('user').doc(uid).collection('jobs').doc(id).update({status: 'commited'});
+    commitToJob(uid, id: string, job) {
+        console.log(job);
+        const docID = this.db.createId();
+        this.db.collection('user').doc(this.user.uid).collection('jobsTaken').doc(docID).set({takenTimestamp: new Date(), ...job});
+        return this.db.collection('user').doc(uid).collection('jobs').doc(id).update({status: 'committed', committedBy: this.user});
+    }
+
+    getAllCommittedJobsByUser() {
+        return this.db.collection('user').doc(this.user.uid).collection('jobsTaken').valueChanges();
+    }
+
+    getAllPostedJobsByUser() {
+        return this.db.collection('user').doc(this.user.uid).collection('/jobs').valueChanges();
+    }
+
+    acceptHelp(jobId) {
+        console.log(this.user.uid, jobId);
+        this.db.collection('user').doc(this.user.uid)
+            .collection('jobs').doc(jobId)
+            .update({status: 'inProgress'});
+    }
+
+    denyHelp(jobId) {
+        this.db.collection('user').doc(this.user.uid)
+            .collection('jobs').doc(jobId)
+            .update({committedBy: {}, status: 'new'});
     }
 }

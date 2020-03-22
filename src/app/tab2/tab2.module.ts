@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Tab2Page } from './tab2.page';
 import {canActivate, redirectUnauthorizedTo} from '@angular/fire/auth-guard';
+import {InteractionCardComponent} from './interaction-card/interaction-card.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,6 @@ const routes: Routes = [
     FormsModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [Tab2Page]
+  declarations: [Tab2Page, InteractionCardComponent]
 })
 export class Tab2PageModule {}

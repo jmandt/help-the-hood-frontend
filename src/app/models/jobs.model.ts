@@ -1,6 +1,6 @@
 import * as firebase from 'firebase/app'
 
-export interface NewJob {
+export interface Job {
     id: string;
     name: string;
     category: string;

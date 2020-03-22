@@ -1,15 +1,15 @@
-<ion-card *ngIf="selectedCategory" (click)="openDetailsModal(id)">
+<ion-card *ngIf="selectedCategory">
   <ion-grid class="ion-no-padding">
     <ion-row class="ion-no-padding">
-      <ion-col size="3" class="icon-container ion-padding-vertical">
+      <ion-col size="3" class="icon-container ion-padding-vertical" (click)="openDetailsModal(id)">
           <app-category-icon [iconName]="selectedCategory.icon"></app-category-icon>
       </ion-col>
-      <ion-col class="main-container" size="9">
+      <ion-col class="main-container" size="9" (click)="openDetailsModal(id)">
         <div class="description">
           <ion-card-content>
             <div class="category">{{selectedCategory.displayName}}</div>
             <div>{{job.name}}</div>
-            <div>{{printDate()}}, {{printTime()}}</div>
+            <!-- <div>{{printDate()}}, {{printTime()}}</div>-->
           </ion-card-content>
         </div>
         <ion-button *ngIf="newJob" color="secondary" class="button-right" (click)="help()" >Helfen</ion-button>
