@@ -38,7 +38,6 @@ export class UserPage {
     }
 
     updateProfile() {
-        console.log({name: this.name, location: this.location});
         this.userService.update({name: this.name, location: this.location});
         this.coreService.showToast('Änderungen wurden gespeichert', 'green');
     }
