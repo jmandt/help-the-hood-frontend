@@ -70,5 +70,15 @@ export const Categories: Category [] = [
         displayName: 'Zuhören',
         value: 'listen',
         icon: 'ear-outline'
+    },
+    {
+        displayName: 'Kochen',
+        value: 'cooking',
+        icon: 'restaurant-outline'
+    },
+    {
+        displayName: 'Papierkram regeln',
+        value: 'paperstuff',
+        icon: 'newspaper-outline'
     }
 ]

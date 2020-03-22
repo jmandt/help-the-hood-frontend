@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {AngularFirestore} from '@angular/fire/firestore';
 import {Select, Store} from '@ngxs/store';
-import * as firebase from 'firebase/app'
+import * as firebase from 'firebase/app';
 
 import {Job, User} from 'src/app/models';
 import {UserState} from 'src/app/store/state';
@@ -48,11 +48,13 @@ export class JobsService {
     }
 
     getAllCommittedJobsByUser() {
-        return this.db.collection('user').doc(this.user.uid).collection('jobsTaken').valueChanges();
+        return this.db.collection('user').doc(this.user.uid)
+            .collection('jobsTaken', ref => ref.orderBy('creationTime', 'desc')).valueChanges();
     }
 
     getAllPostedJobsByUser() {
-        return this.db.collection('user').doc(this.user.uid).collection('/jobs').valueChanges();
+        return this.db.collection('user').doc(this.user.uid)
+            .collection('/jobs', ref => ref.orderBy('creationTime', 'desc')).valueChanges();
     }
 
     acceptHelp(jobId, committedUserId, takenId) {
@@ -82,7 +84,7 @@ export class JobsService {
                 this.db.collection('user').doc(committedUserId)
                     .collection('jobsTaken').doc(takenId)
                     .update({status: 'done', doneChangeTime: new Date()});
-            })
+            });
     }
 
 }

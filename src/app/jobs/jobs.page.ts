@@ -26,7 +26,6 @@ export class JobsPage {
 
     init() {
         this.jobService.getAllCommittedJobsByUser().subscribe(jobs => {
-          console.log(jobs);
             this.jobsTaken = jobs.filter(job => job.status === 'committed' || job.status === 'inProgress');
             this.jobsDoneByMe = jobs.filter(job => job.status === 'done');
         });
